@@ -1,6 +1,6 @@
 {
-    "name": "typo3/neos-base-distribution",
-    "description": "Neos Base Distribution",
+    "name": "typo3/neos-development-distribution",
+    "description": "Neos Development Distribution",
     "license": "GPL-3.0+",
     "support": {
         "email": "hello@neos.io",
@@ -15,19 +15,11 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "1.2.x-dev",
-        "typo3/neos-nodetypes": "1.2.x-dev",
+        "neos/neos-development-collection": "1.2.x-dev",
+        "neos/flow-development-collection": "2.3.x-dev",
         "typo3/neosdemotypo3org": "1.2.x-dev",
-        "typo3/neos-kickstarter": "1.2.x-dev",
         "doctrine/migrations": "1.0.0-alpha3",
-        "typo3/typo3cr": "1.2.x-dev",
-        "typo3/typoscript": "1.2.x-dev",
-        "typo3/media": "1.2.x-dev",
-        "typo3/flow": "2.3.x-dev",
-        "typo3/fluid": "2.3.x-dev",
-        "typo3/eel": "2.3.x-dev",
-        "typo3/party": "2.3.x-dev",
-        "typo3/kickstart": "2.3.x-dev"
+        "typo3/party": "2.3.x-dev"
     },
     "require-dev": {
         "typo3/buildessentials": "2.3.*",
