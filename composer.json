@@ -1,5 +1,5 @@
 {
-    "name": "typo3/neos-development-distribution",
+    "name": "neos/neos-development-distribution",
     "description": "Neos Development Distribution",
     "license": "GPL-3.0+",
     "support": {
