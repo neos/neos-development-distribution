@@ -1,6 +1,6 @@
 {
-    "name": "typo3/neos-base-distribution",
-    "description" : "Neos Base Distribution",
+    "name": "typo3/neos-development-distribution",
+    "description" : "Neos Development Distribution",
     "license": "GPL-3.0+",
     "support": {
         "email": "hello@neos.io",
