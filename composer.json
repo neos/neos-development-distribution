@@ -16,6 +16,7 @@
     },
     "require": {
         "neos/neos-development-collection": "@dev",
+        "neos/flow-development-collection": "@dev",
         "typo3/neosdemotypo3org": "dev-master",
 
         "typo3/party": "@dev",
