@@ -16,6 +16,7 @@
     },
     "require": {
         "neos/neos-development-collection": "2.0.x-dev",
+        "neos/flow-development-collection": "@dev",
         "typo3/neosdemotypo3org": "2.0.x-dev",
 
         "typo3/neos-seo": "~1.0",
