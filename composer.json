@@ -16,6 +16,7 @@
     },
     "require": {
         "neos/neos-development-collection": "1.2.x-dev",
+        "neos/flow-development-collection": "@dev",
         "typo3/neosdemotypo3org": "1.2.x-dev",
         "doctrine/migrations": "1.0.0-alpha3",
         "typo3/party": "2.3.x-dev"
