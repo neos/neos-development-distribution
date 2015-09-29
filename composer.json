@@ -19,14 +19,14 @@
         "neos/flow-development-collection": "@dev",
         "typo3/neosdemotypo3org": "2.0.x-dev",
 
-        "typo3/neos-seo": "~1.0",
-        "typo3/imagine": "~2.0",
-        "typo3/twitter-bootstrap": "~2.0",
-        "typo3/form": "~2.0",
-        "typo3/setup": "~2.0"
+        "typo3/neos-seo": "1.0.x-dev",
+        "typo3/imagine": "2.0.x-dev",
+        "typo3/twitter-bootstrap": "2.0.x-dev",
+        "typo3/form": "2.0.x-dev",
+        "typo3/setup": "2.0-x.dev"
     },
     "require-dev": {
-        "typo3/buildessentials": "3.0.*@rc",
+        "typo3/buildessentials": "3.0.x-dev",
         "mikey179/vfsstream": "1.5.*",
         "phpunit/phpunit": "4.6.*",
         "flowpack/behat": "dev-master"
