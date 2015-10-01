@@ -26,7 +26,7 @@
         "typo3/twitter-bootstrap": "@dev",
         "typo3/form": "@dev",
         "typo3/setup": "@dev",
-        "flowpack/neos-frontendlogin": "@dev"
+        "flowpack/neos-frontendlogin": "@dev",
         "typo3/buildessentials": "dev-master",
         "mikey179/vfsstream": "1.5.*",
         "phpunit/phpunit": "4.6.*",
