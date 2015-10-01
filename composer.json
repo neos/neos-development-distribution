@@ -24,7 +24,7 @@
         "typo3/imagine": "2.0.x-dev",
         "typo3/twitter-bootstrap": "2.0.x-dev",
         "typo3/form": "2.0.x-dev",
-        "typo3/setup": "2.0-x.dev"
+        "typo3/setup": "2.0-x.dev",
         "typo3/buildessentials": "3.0.x-dev",
         "mikey179/vfsstream": "1.5.*",
         "phpunit/phpunit": "4.6.*",
