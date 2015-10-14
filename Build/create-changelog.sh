@@ -98,8 +98,8 @@ perl -p -i -0 -e 's/(\* [^\n]+)\n+(\* [^\n]+)/$1\n$2/g' ${TARGET}
 git add ${TARGET}
 if [ -z "$BUILD_URL" ]
 then
-	git commit -m "[TASK] Add changelog for ${VERSION}"
+	git commit -m "[TASK] Add changelog for ${VERSION}" || echo " nothing to commit "
 else
-	git commit -m "[TASK] Add changelog for ${VERSION}" -m "See $BUILD_URL"
+	git commit -m "[TASK] Add changelog for ${VERSION}" -m "See $BUILD_URL" || echo " nothing to commit "
 fi
 cd -
