@@ -32,23 +32,21 @@ if [ -z "$3" ] ; then
 fi
 BUILD_URL=$3
 
+if [ ! -d "Distribution" ]; then echo '"Distribution" folder not found. Clone the base distribution into "Distribution"'; exit 1; fi
+
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh ${VERSION} ${BRANCH} "${BUILD_URL}" || exit 1
 
-tag_version ${VERSION} ${BRANCH} "${BUILD_URL}"
-push_branch ${BRANCH}
-push_tag ${VERSION}
+echo "Tagging distribution"
+tag_version ${VERSION} ${BRANCH} "${BUILD_URL}" "Distribution"
+push_branch ${BRANCH} "Distribution"
+push_tag ${VERSION} "Distribution"
 
+echo "Tagging development collection"
+tag_version ${VERSION} ${BRANCH} "${BUILD_URL}" "Packages/Neos"
+push_branch ${BRANCH} "Packages/Neos"
+push_tag ${VERSION} "Packages/Neos"
+
+echo "Tagging packages"
 tag_version ${VERSION} ${BRANCH} "${BUILD_URL}" "Packages/Sites/TYPO3.NeosDemoTypo3Org"
 push_branch ${BRANCH} "Packages/Sites/TYPO3.NeosDemoTypo3Org"
 push_tag ${VERSION} "Packages/Sites/TYPO3.NeosDemoTypo3Org"
-
-for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript TYPO3.Media ; do
-	tag_version ${VERSION} ${BRANCH} "${BUILD_URL}" "Packages/Application/${PACKAGE}"
-	push_branch ${BRANCH} "Packages/Application/${PACKAGE}"
-	push_tag ${VERSION} "Packages/Application/${PACKAGE}"
-done
-
-# and now back to x-dev for the branch
-$(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}" || exit 1
-push_branch ${BRANCH}
-push_tag ${VERSION}
