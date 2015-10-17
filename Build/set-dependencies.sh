@@ -53,7 +53,7 @@ if [ ! -d "Distribution" ]; then echo '"Distribution" folder not found. Clone th
 echo "Setting distribution dependencies"
 
 # Require exact versions of the main packages
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neos:${VERSION}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neos:~1.2.3"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neos-nodetypes:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neosdemotypo3org:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neos-kickstarter:${VERSION}"
