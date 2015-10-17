@@ -1,15 +1,7 @@
 #!/bin/bash
 
 #
-# Create a new branch for the distribution and the packages
-#
-# - TYPO3.Neos
-# - TYPO3.Neos.NodeTypes
-# - TYPO3.Neos.Kickstarter
-# - TYPO3.TYPO3CR
-# - TYPO3.TypoScript
-# - TYPO3.NeosDemoTypo3Org
-# - TYPO3.Media
+# Create a new branch for the distribution, the development collection and the demo site
 #
 # Needs the following arguments
 #
@@ -31,19 +23,19 @@ if [ -z "$2" ] ; then
 fi
 BUILD_URL="$2"
 
-# branch distribution
-git checkout -b ${BRANCH} origin/master
+if [ ! -d "Distribution" ]; then echo '"Distribution" folder not found. Clone the base distribution into "Distribution"'; exit 1; fi
 
-# branch packages
-for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript TYPO3.Media ; do
-	git --git-dir "Packages/Application/${PACKAGE}/.git" --work-tree "Packages/Application/${PACKAGE}" checkout -b ${BRANCH} origin/master
-done
+# branch distribution
+cd Distribution && git checkout -b ${BRANCH} origin/master ; cd -
+
+# branch development collection
+cd Packages/Neos && git checkout -b ${BRANCH} origin/master ; cd -
+
+# branch demo site
 cd Packages/Sites/TYPO3.NeosDemoTypo3Org && git checkout -b ${BRANCH} origin/master ; cd -
 
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}"
 
-push_branch ${BRANCH}
-for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript TYPO3.Media ; do
-	push_branch ${BRANCH} "Packages/Application/${PACKAGE}"
-done
+push_branch ${BRANCH} "Distribution"
+push_branch ${BRANCH} "Packages/Neos"
 push_branch ${BRANCH} "Packages/Sites/TYPO3.NeosDemoTypo3Org"
