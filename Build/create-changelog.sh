@@ -26,16 +26,16 @@ cd Packages/Neos
 # Check for jq library
 hash jq 2>/dev/null || { echo >&2 "jq library is not installed. Aborting. Download at https://stedolan.github.io/jq/download/"; exit 1; }
 
-export TARGET="TYPO3.Neos/Documentation/Appendixes/ChangeLogs/`echo ${VERSION} | tr -d .`.rst"
+export TARGET="TYPO3.Neos/Documentation/Appendixes/ChangeLogs/$(echo ${VERSION} | tr -d .).rst"
 
 # Add version and date header
 export DATE="$(date +%Y-%m-%d)"
 echo "\`${VERSION} (${DATE}) <https://github.com/neos/neos-development-collection/releases/tag/${VERSION}>\`_" > ${TARGET}
-perl -E 'say "=" x '`echo $(($(tail -1 $TARGET | wc -c) - 1))` >> ${TARGET}
+perl -E 'say "=" x '$(echo $(($(tail -1 $TARGET | wc -c) - 1))) >> ${TARGET}
 echo -e "\nOverview of merged pull requests\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" >> ${TARGET}
 
 # Loop over merge commits since previous version
-for mergeCommit in `git log $PREVIOUS_VERSION.. --grep="Merge pull request" --oneline | cut -d ' ' -f1`; do
+for mergeCommit in $(git log $PREVIOUS_VERSION.. --grep="Merge pull request" --oneline | cut -d ' ' -f1); do
 	pullRequest=$(git show $mergeCommit --oneline | cut -d ' ' -f5 | cut -c2-)
 	if [ -z "$GITHUB_TOKEN" ];
 	then
@@ -44,14 +44,14 @@ for mergeCommit in `git log $PREVIOUS_VERSION.. --grep="Merge pull request" --on
 		curl https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest?access_token=$GITHUB_TOKEN > pr
 	fi
 	if [[ $(cat pr | jq '.message') != "null" ]]; then cat pr | jq -r '.message'; exit 1; fi
-	echo "\`"`cat pr | jq -r '.title'`" <"https://github.com/neos/neos-development-collection/pull/$pullRequest">\`_" >> $TARGET
-	perl -E 'say "-" x '`echo $(($(tail -1 $TARGET | wc -c) - 1))` >> ${TARGET}
+	echo "\`"$(cat pr | jq -r '.title' | sed 's/`/\\`/g')" <"https://github.com/neos/neos-development-collection/pull/$pullRequest">\`_" >> $TARGET
+	perl -E 'say "-" x '$(echo $(($(tail -1 $TARGET | wc -c) - 1))) >> ${TARGET}
 	echo >> $TARGET
 	cat pr | jq -r '.body' >> $TARGET
 	echo >> $TARGET
 	packages=()
 	# Loop over changed files in merge commit
-	for changedFile in `git show $mergeCommit^ $mergeCommit^2 --name-only --oneline | tail -n +2`; do
+	for changedFile in $(git show $mergeCommit^ $mergeCommit^2 --name-only --oneline | tail -n +2); do
 		# Get first part of changed filename
 		package=$(echo "$changedFile" | cut -d '/' -f1)
 		# Check if first part of filename is a directory
@@ -63,7 +63,7 @@ for mergeCommit in `git log $PREVIOUS_VERSION.. --grep="Merge pull request" --on
 	# Remove duplicates
 	packages=$(echo ${packages[@]} | tr ' ' '\n' | sort -u | tr '\n' ' ')
 	if [ -n "${packages// }" ]; then
-		echo "* Packages: \`\`"`echo $packages | sed 's/ /\`\` \`\`/g'`"\`\`" >> $TARGET
+		echo "* Packages: \`\`"$(echo $packages | sed 's/ /`` ``/g')"\`\`" >> $TARGET
 	fi
 	echo >> $TARGET
 done
@@ -71,7 +71,7 @@ done
 rm -f pr
 
 echo -e "\n\n\`Detailed log <https://github.com/neos/neos-development-collection/compare/$PREVIOUS_VERSION...$VERSION>\`_" >> $TARGET
-perl -E 'say "~" x '`echo $(($(tail -1 $TARGET | wc -c) - 1))` >> ${TARGET}
+perl -E 'say "~" x '$(echo $(($(tail -1 $TARGET | wc -c) - 1))) >> ${TARGET}
 
 # Drop some footer lines from commit messages
 perl -p -i -e 's|^Change-Id: (I[a-f0-9]+)$||g' ${TARGET}
@@ -88,7 +88,7 @@ perl -p -i -e 's/(Fixes|Resolves|Related|Relates): NEOS-([0-9]+)/* $1: `NEOS-$2 
 perl -p -i -e 's/([0-9a-f]{40})/`$1 <https:\/\/github.com\/neos\/neos-development-collection\/commit\/$1>`_/g' ${TARGET}
 
 # escape backslashes
-perl -p -i -e 's/\\/\\\\/g' ${TARGET}
+perl -p -i -e 's/\\[^`]/\\\\/g' ${TARGET}
 # clean up empty lines
 perl -p -i -0 -e 's/\n\n+/\n\n/g' ${TARGET}
 # join bullet list items
