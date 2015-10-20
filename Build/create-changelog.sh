@@ -88,7 +88,7 @@ perl -p -i -e 's/(Fixes|Resolves|Related|Relates): NEOS-([0-9]+)/* $1: `NEOS-$2 
 perl -p -i -e 's/([0-9a-f]{40})/`$1 <https:\/\/github.com\/neos\/neos-development-collection\/commit\/$1>`_/g' ${TARGET}
 
 # escape backslashes
-perl -p -i -e 's/\\[^`]/\\\\/g' ${TARGET}
+perl -p -i -e 's/\\([^`])/\\\\$1/g' ${TARGET}
 # clean up empty lines
 perl -p -i -0 -e 's/\n\n+/\n\n/g' ${TARGET}
 # join bullet list items
