@@ -89,6 +89,8 @@ perl -p -i -e 's/([0-9a-f]{40})/`$1 <https:\/\/github.com\/neos\/neos-developmen
 
 # escape backslashes
 perl -p -i -e 's/\\([^`])/\\\\$1/g' ${TARGET}
+# remove escaped backslashes inside backticks
+perl -p -i -e 's/(``.*)\\\\(.*``)/$1\\$2/g' ${TARGET}
 # clean up empty lines
 perl -p -i -0 -e 's/\n\n+/\n\n/g' ${TARGET}
 # join bullet list items
