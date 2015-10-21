@@ -2,7 +2,7 @@
 set -e
 #
 # Generates a changelog in reStructuredText from the commit history of
-# the base distribution and the packages:
+# the packages in Packages/Neos:
 #
 # - TYPO3.Media
 # - TYPO3.Neos
@@ -82,8 +82,7 @@ perl -p -i -e 's|^Reviewed-on?:.*$||g' ${TARGET}
 perl -p -i -e 's|^Tested-by?:.*$||g' ${TARGET}
 
 # Link issues to Jira
-perl -p -i -e 's/(Fixes|Resolves|Related|Relates): NEOS-([0-9]+)/* $1: `NEOS-$2 <https:\/\/jira.neos.io\/browse\/NEOS-$2>`_/g' ${TARGET}
-
+perl -p -i -e 's/(Fixes|Resolves|Related|Relates): (NEOS|FLOW)-([0-9]+)/* $1: `$2-$3 <https:\/\/jira.neos.io\/browse\/$2-$3>`_/g' ${TARGET}
 # Link to commits
 perl -p -i -e 's/([0-9a-f]{40})/`$1 <https:\/\/github.com\/neos\/neos-development-collection\/commit\/$1>`_/g' ${TARGET}
 
