@@ -2,7 +2,7 @@
 set -e
 #
 # Generates a changelog in reStructuredText from the commit history of
-# the base distribution and the packages:
+# the packages in Packages/Neos:
 #
 # - TYPO3.Media
 # - TYPO3.Neos
