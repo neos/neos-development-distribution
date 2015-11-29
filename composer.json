@@ -28,8 +28,8 @@
         "typo3/setup": "@dev",
         "flowpack/neos-frontendlogin": "@dev",
         "typo3/buildessentials": "dev-master",
-        "mikey179/vfsstream": "1.6.*",
-        "phpunit/phpunit": "4.8.*",
+        "mikey179/vfsstream": "~1.6",
+        "phpunit/phpunit": "~4.8",
         "flowpack/behat": "dev-master"
     },
     "suggest": {
