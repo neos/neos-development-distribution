@@ -22,8 +22,8 @@
         "doctrine/migrations": "1.0.0-alpha3",
         "typo3/party": "2.3.x-dev",
         "typo3/buildessentials": "2.3.x-dev",
-        "mikey179/vfsstream": "1.5.*",
-        "phpunit/phpunit": "4.6.*",
+        "mikey179/vfsstream": "~1.6",
+        "phpunit/phpunit": "~4.8",
         "flowpack/behat": "dev-master"
     },
     "suggest": {
