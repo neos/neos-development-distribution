@@ -63,12 +63,14 @@ if [[ ${STABILITY_FLAG} ]] ; then
 	php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/typo3cr:${VERSION}"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/typoscript:${VERSION}"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/media:${VERSION}"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/diff:${VERSION}"
 # Remove dependencies not needed if releasing a stable version
 else
 	# Remove requirements for development version of sub dependency packages
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/typo3cr"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/typoscript"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/media"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/diff"
 	# Remove requirements for development version of framework sub dependency packages
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/flow"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/fluid"
@@ -84,5 +86,6 @@ echo "Setting packages dependencies"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/TYPO3.Neos require --no-update "typo3/typo3cr:~${BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/TYPO3.Neos require --no-update "typo3/typoscript:~${BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/TYPO3.Neos require --no-update "typo3/media:~${BRANCH}.0"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/TYPO3.Neos require --no-update "neos/diff:~${BRANCH}.0"
 
 commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Packages/Neos"
