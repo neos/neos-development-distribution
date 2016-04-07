@@ -23,7 +23,7 @@
         "typo3/party": "2.3.x-dev",
         "typo3/buildessentials": "2.3.x-dev",
         "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~4.8 || ~5.0",
+        "phpunit/phpunit": "~4.8 || ~5.2.0",
         "symfony/css-selector": "~2.0",
         "flowpack/behat": "dev-master"
     },
