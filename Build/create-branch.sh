@@ -32,10 +32,10 @@ cd Distribution && git checkout -b ${BRANCH} origin/master ; cd -
 cd Packages/Neos && git checkout -b ${BRANCH} origin/master ; cd -
 
 # branch demo site
-cd Packages/Sites/TYPO3.NeosDemoTypo3Org && git checkout -b ${BRANCH} origin/master ; cd -
+cd Packages/Sites/Neos.Demo && git checkout -b ${BRANCH} origin/master ; cd -
 
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}"
 
 push_branch ${BRANCH} "Distribution"
 push_branch ${BRANCH} "Packages/Neos"
-push_branch ${BRANCH} "Packages/Sites/TYPO3.NeosDemoTypo3Org"
+push_branch ${BRANCH} "Packages/Sites/Neos.Demo"
