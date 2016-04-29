@@ -34,7 +34,7 @@ cd Packages/Neos && git checkout -b ${BRANCH} origin/master ; cd -
 # branch demo site
 cd Packages/Sites/Neos.Demo && git checkout -b ${BRANCH} origin/master ; cd -
 
-$(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}"
+$(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}" || exit 1
 
 push_branch ${BRANCH} "Distribution"
 push_branch ${BRANCH} "Packages/Neos"
