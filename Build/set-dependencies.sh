@@ -55,7 +55,7 @@ echo "Setting distribution dependencies"
 # Require exact versions of the main packages
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neos:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neos-nodetypes:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neosdemotypo3org:${VERSION}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "typo3/neos-kickstarter:${VERSION}"
 
 # Require exact versions of sub dependency packages, allowing unstable
@@ -71,12 +71,24 @@ else
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/typoscript"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/media"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/diff"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/redirecthandler"
+
 	# Remove requirements for development version of framework sub dependency packages
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/flow"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/fluid"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/eel"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/party"
 	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "typo3/kickstart"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/error-messages"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-arrays"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-files"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-lock"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-mediatypes"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-objecthandling"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-opcodecache"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-pdo"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-schema"
+	php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-unicode"
 fi
 
 commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Distribution"
