@@ -35,7 +35,9 @@ perl -E 'say "=" x '$(echo $(($(tail -1 $TARGET | wc -c) - 1))) >> ${TARGET}
 echo -e "\nOverview of merged pull requests\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" >> ${TARGET}
 
 # Loop over merge commits since previous version
-for mergeCommit in $(git log $PREVIOUS_VERSION.. --grep="Merge pull request" --oneline | cut -d ' ' -f1); do
+for mergeCommit in $(git log $PREVIOUS_VERSION.. --grep="^Merge pull request" --oneline | cut -d ' ' -f1); do
+    echo
+    echo $mergeCommit
 	pullRequest=$(git show $mergeCommit --no-patch --oneline | cut -d ' ' -f5 | cut -c2-)
 	if [ -z "$GITHUB_TOKEN" ];
 	then
