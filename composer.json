@@ -17,7 +17,7 @@
     },
     "require": {
         "neos/neos-development-collection": "2.1.x-dev",
-        "neos/flow-development-collection": "@dev",
+        "neos/flow-development-collection": "3.1.x-dev",
         "typo3/neosdemotypo3org": "2.1.x-dev",
 
         "typo3/party": "@dev",
