@@ -32,7 +32,7 @@
         "phpunit/phpunit": "~4.8 || ~5.4.0",
         "symfony/css-selector": "~2.0",
         "flowpack/behat": "dev-master"
-    }
+    },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },
