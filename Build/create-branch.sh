@@ -9,6 +9,8 @@
 # BUILD_URL        used in commit message
 #
 
+set -e
+
 if [ -z "$BRANCH" ]; then echo "\$BRANCH not set"; exit 1; fi
 if [ -z "$BUILD_URL" ]; then echo "\$BUILD_URL not set"; exit 1; fi
 
@@ -21,7 +23,7 @@ composer.phar -v update
 source $(dirname ${BASH_SOURCE[0]})/BuildEssentials/ReleaseHelpers.sh
 
 rm -rf Distribution
-git clone -b ${BRANCH} git@github.com:neos/neos-base-distribution.git Distribution
+git clone git@github.com:neos/neos-base-distribution.git Distribution
 
 # branch distribution
 cd Distribution && git checkout -b ${BRANCH} origin/master ; cd -
@@ -37,3 +39,15 @@ $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${
 push_branch ${BRANCH} "Distribution"
 push_branch ${BRANCH} "Packages/Neos"
 push_branch ${BRANCH} "Packages/Sites/Neos.Demo"
+
+# same procedure again with the Development Distribution
+
+rm -rf Distribution
+git clone git@github.com:neos/neos-development-distribution.git Distribution
+
+# branch distribution
+cd Distribution && git checkout -b ${BRANCH} origin/master ; cd -
+
+$(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}" || exit 1
+
+push_branch ${BRANCH} "Distribution"
