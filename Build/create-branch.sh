@@ -3,16 +3,22 @@
 #
 # Create a new branch for the distribution, the development collection and the demo site
 #
-# Needs the following arguments
+# Expects the following environment variables:
 #
-# $1 BRANCH    the branch to create
-# $2 BUILD_URL used in commit message
+# BRANCH           the branch that will be created
+# BUILD_URL        used in commit message
 #
 
 source $(dirname ${BASH_SOURCE[0]})/BuildEssentials/ReleaseHelpers.sh
 
 if [ -z "$BRANCH" ]; then echo "\$BRANCH not set"; exit 1; fi
 if [ -z "$BUILD_URL" ]; then echo "\$BUILD_URL not set"; exit 1; fi
+
+if [ ! -e "composer.phar" ]; then
+    ln -s /usr/local/bin/composer.phar composer.phar
+fi
+
+composer.phar -v update
 
 rm -rf Distribution
 git clone -b ${BRANCH} git@github.com:neos/neos-base-distribution.git Distribution
