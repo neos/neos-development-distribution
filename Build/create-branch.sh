@@ -11,19 +11,11 @@
 
 source $(dirname ${BASH_SOURCE[0]})/BuildEssentials/ReleaseHelpers.sh
 
-if [ -z "$1" ] ; then
-	echo >&2 "No branch specified (e.g. 2.1) as first parameter"
-	exit 1
-fi
-BRANCH=$1
+if [ -z "$BRANCH" ]; then echo "\$BRANCH not set"; exit 1; fi
+if [ -z "$BUILD_URL" ]; then echo "\$BUILD_URL not set"; exit 1; fi
 
-if [ -z "$2" ] ; then
-	echo >&2 "No build URL given as second parameter"
-	exit 1
-fi
-BUILD_URL="$2"
-
-if [ ! -d "Distribution" ]; then echo '"Distribution" folder not found. Clone the base distribution into "Distribution"'; exit 1; fi
+rm -rf Distribution
+git clone -b ${BRANCH} git@github.com:neos/neos-base-distribution.git Distribution
 
 # branch distribution
 cd Distribution && git checkout -b ${BRANCH} origin/master ; cd -
