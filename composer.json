@@ -18,7 +18,7 @@
     "require": {
         "neos/neos-development-collection": "@dev",
         "neos/flow-development-collection": "@dev",
-        "neos/demo": "@dev",
+        "neos/demo": "3.0.x-dev",
 
         "neos/party": "@dev",
         "neos/seo": "@dev",
@@ -31,7 +31,14 @@
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~4.8 || ~5.4.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "dev-master"
+        "neos/behat": "dev-master",
+        "neos/neos": "3.0.x-dev",
+        "neos/nodetypes": "3.0.x-dev",
+        "neos/site-kickstarter": "3.0.x-dev",
+        "neos/content-repository": "3.0.x-dev",
+        "neos/fusion": "3.0.x-dev",
+        "neos/media": "3.0.x-dev",
+        "neos/diff": "3.0.x-dev"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
