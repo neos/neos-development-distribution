@@ -9,8 +9,6 @@
 # BUILD_URL        used in commit message
 #
 
-source $(dirname ${BASH_SOURCE[0]})/BuildEssentials/ReleaseHelpers.sh
-
 if [ -z "$BRANCH" ]; then echo "\$BRANCH not set"; exit 1; fi
 if [ -z "$BUILD_URL" ]; then echo "\$BUILD_URL not set"; exit 1; fi
 
@@ -19,6 +17,8 @@ if [ ! -e "composer.phar" ]; then
 fi
 
 composer.phar -v update
+
+source $(dirname ${BASH_SOURCE[0]})/BuildEssentials/ReleaseHelpers.sh
 
 rm -rf Distribution
 git clone -b ${BRANCH} git@github.com:neos/neos-base-distribution.git Distribution
