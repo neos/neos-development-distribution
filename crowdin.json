@@ -1,0 +1,47 @@
+{
+    "branch": "2.3",
+
+    "__bundle": {
+        "projectIdentifier": "neos",
+        "apiKey": "%CROWDIN_API_KEY%"
+    },
+
+    "flow": {
+        "name": "TYPO3.Flow",
+        "path": "Packages/Framework/TYPO3.Flow"
+    },
+    "fluid": {
+        "name": "TYPO3.Fluid",
+        "path": "Packages/Framework/TYPO3.Fluid"
+    },
+
+    "media": {
+        "name": "TYPO3.Media",
+        "path": "Packages/Neos/TYPO3.Media"
+    },
+    "neos": {
+        "name": "TYPO3.Neos",
+        "path": "Packages/Neos/TYPO3.Neos"
+    },
+    "nodetypes": {
+        "name": "TYPO3.Neos.NodeTypes",
+        "path": "Packages/Neos/TYPO3.Neos.NodeTypes"
+    },
+
+    "form": {
+        "name": "TYPO3.Form",
+        "path": "Packages/Application/TYPO3.Form"
+    },
+    "google-analytics": {
+        "name": "TYPO3.Neos.GoogleAnalytics",
+        "path": "Packages/Application/TYPO3.Neos.GoogleAnalytics"
+    },
+    "seo": {
+        "name": "TYPO3.Neos.Seo",
+        "path": "Packages/Application/TYPO3.Neos.Seo"
+    },
+    "party": {
+        "name": "TYPO3.Party",
+        "path": "Packages/Application/TYPO3.Party"
+    }
+}
