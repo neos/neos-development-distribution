@@ -26,7 +26,7 @@ cd Packages/Neos
 # Check for jq library
 hash jq 2>/dev/null || { echo >&2 "jq library is not installed. Aborting. Download at https://stedolan.github.io/jq/download/"; exit 1; }
 
-export TARGET="TYPO3.Neos/Documentation/Appendixes/ChangeLogs/$(echo ${VERSION} | tr -d .).rst"
+export TARGET="Neos.Neos/Documentation/Appendixes/ChangeLogs/$(echo ${VERSION} | tr -d .).rst"
 
 # Add version and date header
 export DATE="$(date +%Y-%m-%d)"
