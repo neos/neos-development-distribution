@@ -1,6 +1,6 @@
 {
-    "name": "neos/neos-development-distribution",
-    "description" : "Neos Development Distribution",
+    "name": "neos/neos-base-distribution",
+    "description": "Neos Base Distribution",
     "license": "GPL-3.0+",
     "support": {
         "email": "hello@neos.io",
@@ -8,29 +8,38 @@
         "forum": "https://discuss.neos.io/",
         "wiki": "https://discuss.neos.io/c/the-neos-project/project-documentation",
         "issues": "https://github.com/neos/neos-development-collection/issues",
-        "docs": "http://neos.readthedocs.io/",
-        "source": "https://github.com/neos/neos-development-distribution"
+        "docs": "http://neos.readthedocs.org/",
+        "source": "https://github.com/neos/neos-base-distribution"
     },
     "config": {
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
+    "minimum-stability" : "dev",
     "require": {
-        "neos/neos-development-collection": "3.0.x-dev",
-        "neos/flow-development-collection": "@dev",
         "neos/demo": "3.0.x-dev",
-        "neos/party": "@dev",
-        "neos/seo": "@dev",
-        "neos/imagine": "@dev",
-        "neos/twitter-bootstrap": "@dev",
-        "neos/form": "@dev",
-        "neos/setup": "@dev",
-        "flowpack/neos-frontendlogin": "@dev",
-        "neos/buildessentials": "4.0.x-dev",
+        "neos/seo": "2.0.x-dev",
+        "neos/setup": "4.0.x-dev",
+        "flowpack/neos-frontendlogin": "3.0.x-dev",
+        "neos/redirecthandler-neosadapter": "~1.0",
+        "neos/redirecthandler-databasestorage": "~1.0",
+        "neos/neos": "3.0.x-dev",
+        "neos/nodetypes": "3.0.x-dev",
+        "neos/site-kickstarter": "3.0.x-dev",
+        "neos/content-repository": "3.0.x-dev",
+        "neos/fusion": "3.0.x-dev",
+        "neos/media": "3.0.x-dev",
+        "neos/diff": "3.0.x-dev"
+    },
+    "require-dev": {
+        "typo3/buildessentials": "3.3.x-dev",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~5.4.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "dev-master"
+        "flowpack/behat": "dev-master"
+    },
+    "replace": {
+        "typo3/neos-base-distribution": "self.version"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
