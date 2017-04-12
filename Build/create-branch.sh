@@ -48,6 +48,8 @@ git clone git@github.com:neos/neos-development-distribution.git Distribution
 # branch distribution
 cd Distribution && git checkout -b ${BRANCH} origin/master ; cd -
 
+# special case for the Development Distribution
+composer.phar --working-dir=Distribution require --no-update "neos/neos-development-collection:${BRANCH}.x-dev"
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}" || exit 1
 
 push_branch ${BRANCH} "Distribution"
