@@ -7,7 +7,8 @@
 # Needs the following parameters
 #
 # VERSION          the version that is "to be released"
-# BRANCH           the branch that is worked on, used in commit message
+# BRANCH           the branch that is worked on
+# FLOW_BRANCH      the corresponding Flow branch for the branch that is worked on
 # BUILD_URL        used in commit message
 #
 
@@ -24,7 +25,7 @@ if [ -z "$1" ] ; then
     exit 1
 else
     if [[ $1 =~ (dev)-.+ || $1 =~ .+(@dev|.x-dev) || $1 =~ (alpha|beta|RC|rc)[0-9]+ ]] ; then
-        VERSION=$1
+        VERSION="$1"
         STABILITY_FLAG=${BASH_REMATCH[1]}
     else
         if [[ $1 =~ ([0-9]+\.[0-9]+)\.[0-9] ]] ; then
@@ -40,13 +41,19 @@ if [ -z "$2" ] ; then
     echo >&2 "No branch specified (e.g. 2.1) as second parameter."
     exit 1
 fi
-BRANCH=$2
+BRANCH="$2"
 
 if [ -z "$3" ] ; then
-    echo >&2 "No build URL specified as third parameter."
+    echo >&2 "No Flow branch specified (e.g. 3.1) as third parameter."
     exit 1
 fi
-BUILD_URL="$3"
+FLOW_BRANCH="$3"
+
+if [ -z "$4" ] ; then
+    echo >&2 "No build URL specified as fourth parameter."
+    exit 1
+fi
+BUILD_URL="$4"
 
 if [ ! -d "Distribution" ]; then echo '"Distribution" folder not found. Clone the base distribution into "Distribution"'; exit 1; fi
 
@@ -63,6 +70,7 @@ if [[ ${STABILITY_FLAG} ]] ; then
     php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/content-repository:${VERSION}"
     php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/fusion:${VERSION}"
     php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/media:${VERSION}"
+    php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/media-browser:${VERSION}"
     php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/diff:${VERSION}"
 # Remove dependencies not needed if releasing a stable version
 else
@@ -70,6 +78,7 @@ else
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/content-repository"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/fusion"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/media"
+    php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/media-browser"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/diff"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/redirecthandler"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/party"
@@ -99,6 +108,16 @@ echo "Setting packages dependencies"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/content-repository:~${BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fusion:~${BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/media:~${BRANCH}.0"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/media-browser:~${BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/diff:~${BRANCH}.0"
+
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/flow:~${FLOW_BRANCH}.0"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fluid-adaptor:~${FLOW_BRANCH}.0"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.SiteKickstarter require --no-update "neos/kickstarter:~${FLOW_BRANCH}.0"
+
+cd Packages/Neos
+php ../../Build/BuildEssentials/ComposerManifestMerger.php
+cd -
+
 
 commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Packages/Neos"
