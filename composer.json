@@ -30,7 +30,7 @@
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~5.4.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "dev-master"
+        "neos/behat": "4.0.x-dev"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
