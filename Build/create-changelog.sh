@@ -47,7 +47,7 @@ for mergeCommit in $(git log $PREVIOUS_VERSION.. --grep="^Merge pull request" --
 		echo "fetching info from https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest?access_token=<...>"
 		curl -sS "https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest?access_token=$GITHUB_TOKEN" > pr
 	fi
-	if [[ $(cat pr | jq '.message') != "null" ]]; then cat pr | jq -r '.message'; exit 1; fi
+	if [[ $(cat pr | jq '.message') != "null" ]]; then cat pr | jq -r '.message'; continue; fi
 	echo "\`"$(cat pr | jq -r '.title' | sed 's/`/\\`/g')" <"https://github.com/neos/neos-development-collection/pull/$pullRequest">\`_" >> $TARGET
 	perl -E 'say "-" x '$(echo $(($(tail -1 $TARGET | wc -c) - 1))) >> ${TARGET}
 	echo >> $TARGET
