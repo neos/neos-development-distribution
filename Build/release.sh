@@ -8,6 +8,7 @@
 # VERSION          the version that is "to be released"
 # PREVIOUS_VERSION the version which will be the previous one to VERSION
 # BRANCH           the branch that is worked on
+# FLOW_BRANCH      the corresponding Flow branch for the branch that will be created
 # BUILD_URL        used in commit message
 #
 
@@ -26,7 +27,7 @@ fi
 
 composer.phar -v update
 Build/create-changelog.sh
-Build/tag-release.sh "${VERSION}" "${BRANCH}" "${BUILD_URL}"
+Build/tag-release.sh "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}"
 
 #
 # Create a new "Release" on Github:
