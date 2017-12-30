@@ -1,47 +1,21 @@
 {
-    "branch": "master",
-
-    "__bundle": {
-        "projectIdentifier": "neos",
+    "project": {
+        "branch": "",
+        "identifier": "neos",
         "apiKey": "%CROWDIN_API_KEY%"
     },
 
-    "flow": {
-        "name": "Neos.Flow",
-        "path": "Packages/Framework/Neos.Flow"
-    },
-    "fluid": {
-        "name": "Neos.Fluid",
-        "path": "Packages/Framework/Neos.Fluid"
-    },
+    "items": {
+        "neos": {
+            "path": "Packages/Neos/*"
+        },
 
-    "media": {
-        "name": "Neos.Media",
-        "path": "Packages/Neos/Neos.Media"
-    },
-    "neos": {
-        "name": "Neos.Neos",
-        "path": "Packages/Neos/Neos.Neos"
-    },
-    "nodetypes": {
-        "name": "Neos.NodeTypes",
-        "path": "Packages/Neos/Neos.NodeTypes"
-    },
+        "framework": {
+            "path": "Packages/Framework/*"
+        },
 
-    "form": {
-        "name": "Neos.Form",
-        "path": "Packages/Application/Neos.Form"
-    },
-    "google-analytics": {
-        "name": "Neos.GoogleAnalytics",
-        "path": "Packages/Application/Neos.GoogleAnalytics"
-    },
-    "seo": {
-        "name": "Neos.Seo",
-        "path": "Packages/Application/Neos.Seo"
-    },
-    "party": {
-        "name": "Neos.Party",
-        "path": "Packages/Application/Neos.Party"
+        "addons": {
+            "path": "Packages/Application/Neos.*"
+        }
     }
 }
