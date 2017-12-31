@@ -31,7 +31,7 @@ php Build/BuildEssentials/Crowdin/Teardown.php `pwd`/crowdin.json
 cd Packages/Framework
 echo 'Commit and push to Framework'
 git ls-files -o | grep 'Translations' | xargs git add
-git commit -am 'TASK: Update translations from translation tool' || exit true
+git commit -am 'TASK: Update translations from translation tool' || true
 git pull --rebase
 git config push.default simple
 git push origin
@@ -41,7 +41,7 @@ cd -
 cd Packages/Neos
 echo 'Commit and push to Neos'
 git ls-files -o | grep 'Translations' | xargs git add
-git commit -am 'TASK: Update translations from translation tool' || exit true
+git commit -am 'TASK: Update translations from translation tool' || true
 git pull --rebase
 git config push.default simple
 git push origin
