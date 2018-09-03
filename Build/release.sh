@@ -25,7 +25,8 @@ if [ ! -e "composer.phar" ]; then
     ln -s /usr/local/bin/composer.phar composer.phar
 fi
 
-composer.phar -v update
+composer.phar -vn clear-cache
+composer.phar -vn update
 Build/create-changelog.sh
 Build/tag-release.sh "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}"
 
