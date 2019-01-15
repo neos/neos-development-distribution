@@ -15,9 +15,14 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
+    "repositories": [
+        {"type": "git", "url": "https://github.com/johannessteu/behat.git"},
+        {"type": "git", "url": "https://github.com/johannessteu/neos-development-collection.git"},
+        {"type": "git", "url": "https://github.com/johannessteu/flow-development-collection.git"}
+    ],
     "require": {
-        "neos/neos-development-collection": "@dev",
-        "neos/flow-development-collection": "@dev",
+        "neos/neos-development-collection": "dev-behat-upgrade as dev-master",
+        "neos/flow-development-collection": "dev-behat-upgrade as dev-master",
         "neos/demo": "@dev",
 
         "neos/neos-ui": "@dev",
@@ -34,7 +39,7 @@
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~7.1.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "dev-master"
+        "neos/behat": "dev-behat-upgrade"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
