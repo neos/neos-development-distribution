@@ -49,6 +49,7 @@ before_script:
   - cp Configuration/Settings.yaml.example Configuration/Settings.yaml
   - Build/BuildEssentials/TravisCi/SetupDatabase.sh
   - cp Configuration/Settings.yaml Configuration/Testing/
+  - rm -rf Build/Behat
   - php flow behat:setup
   - if [ "$DB" = "mysql" ]; then echo "MariaDB version ${TRAVIS_MARIADB_VERSION}"; fi
   - composer dump-autoload
