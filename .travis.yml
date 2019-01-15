@@ -54,9 +54,9 @@ before_script:
   - composer dump-autoload
   - ./flow flow:cache:flush && ./flow flow:cache:warmup && ./flow flow:package:rescan
 script:
-  - bin/behat --stop-on-failure -f progress -c Packages/Framework/Neos.Flow/Tests/Behavior/behat.yml.dist
   - bin/behat --stop-on-failure -f progress -c Packages/Neos/Neos.Neos/Tests/Behavior/behat.yml.dist --tags ~@browser
   - bin/behat --stop-on-failure -f progress -c Packages/Neos/Neos.ContentRepository/Tests/Behavior/behat.yml.dist
+  - bin/behat --stop-on-failure -f progress -c Packages/Framework/Neos.Flow/Tests/Behavior/behat.yml.dist
 notifications:
   email: false
   slack:
