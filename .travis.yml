@@ -51,11 +51,11 @@ before_script:
   - cp Configuration/Settings.yaml Configuration/Testing/
   - php flow behat:setup
   - if [ "$DB" = "mysql" ]; then echo "MariaDB version ${TRAVIS_MARIADB_VERSION}"; fi
+  - composer dump-autoload
+  - rm -rf Data/Temporary
 script:
-  - ls -l Packages/Framework/Neos.Flow/Tests/Behavior/
   - bin/behat --stop-on-failure -f progress -c Packages/Framework/Neos.Flow/Tests/Behavior/behat.yml.dist
   - bin/behat --stop-on-failure -f progress -c Packages/Neos/Neos.Neos/Tests/Behavior/behat.yml.dist --tags ~@browser
-  - ls -l Packages/Neos/Neos.ContentRepository/Tests/Behavior/
   - bin/behat --stop-on-failure -f progress -c Packages/Neos/Neos.ContentRepository/Tests/Behavior/behat.yml.dist
 notifications:
   email: false
