@@ -1572,7 +1572,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannessteu/flow-development-collection.git",
-                "reference": "5ef3ff6966cc124e53043d8b671e21f8e337cfe3"
+                "reference": "d1ac323b6e09bc14e1548a330403f3eeaf588a11"
             },
             "require": {
                 "doctrine/common": "^2.4",
@@ -1732,7 +1732,7 @@
                 "MIT"
             ],
             "description": "Flow packages in a joined repository for pull requests.",
-            "time": "2019-01-15T19:20:46+00:00"
+            "time": "2019-01-16T07:28:09+00:00"
         },
         {
             "name": "neos/form",
@@ -1970,7 +1970,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johannessteu/neos-development-collection.git",
-                "reference": "2dd89ba11dbe98cfe5939a4b64c4aeefdfadc032"
+                "reference": "a2bdbdf6fc156df978b82c89a717b33b7b980470"
             },
             "require": {
                 "behat/transliterator": "~1.0",
@@ -2108,7 +2108,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Neos packages in a joined repository for pull requests.",
-            "time": "2019-01-15T19:38:15+00:00"
+            "time": "2019-01-16T07:27:04+00:00"
         },
         {
             "name": "neos/neos-ui",
