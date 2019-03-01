@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Create a new branch for the distribution, the development collection and the demo site
+# Create a new branch for the distribution and the development collection
 #
 # Expects the following environment variables:
 #
