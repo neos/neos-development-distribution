@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Create a new branch for the distribution, the development collection and the demo site
+# Create a new branch for the distribution and the development collection
 #
 # Expects the following environment variables:
 #
@@ -40,10 +40,6 @@ push_branch "${BRANCH}" "Distribution"
 cd Packages/Neos && git checkout -b "${BRANCH}" origin/master ; cd -
 push_branch "${BRANCH}" "Packages/Neos"
 
-# branch demo site
-cd Packages/Sites/Neos.Demo && git checkout -b "${BRANCH}" origin/master ; cd -
-push_branch "${BRANCH}" "Packages/Sites/Neos.Demo"
-
 # use old composer.phar to work around https://github.com/composer/composer/issues/7800
 rm composer.phar
 ln -s composer-1.5.2.phar composer.phar
@@ -52,7 +48,6 @@ $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" "${BRANCH}" "
 
 push_branch "${BRANCH}" "Distribution"
 push_branch "${BRANCH}" "Packages/Neos"
-push_branch "${BRANCH}" "Packages/Sites/Neos.Demo"
 
 # same procedure again with the Development Distribution
 
