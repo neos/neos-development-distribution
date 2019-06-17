@@ -23,7 +23,7 @@
         "neos/seo": "@dev",
         "neos/imagine": "@dev",
         "neos/twitter-bootstrap": "@dev",
-        "neos/form": "@dev",
+        "neos/form": "4.2.x-dev",
         "neos/setup": "@dev",
         "flowpack/neos-frontendlogin": "@dev",
         "neos/buildessentials": "4.0.x-dev",
