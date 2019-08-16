@@ -27,7 +27,7 @@
     "neos/twitter-bootstrap": "@dev",
     "neos/form": "@dev",
     "neos/setup": "@dev",
-    "flowpack/neos-frontendlogin": "@dev",
+    "flowpack/neos-frontendlogin": "dev-master",
     "neos/buildessentials": "@dev",
     "mikey179/vfsstream": "^1.6",
     "phpunit/phpunit": "^8.1",
