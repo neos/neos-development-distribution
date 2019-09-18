@@ -97,6 +97,7 @@ else
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-pdo"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-schema"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-unicode"
+    php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/http-factories"
 fi
 
 commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Distribution"
