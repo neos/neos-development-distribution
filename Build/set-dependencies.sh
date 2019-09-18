@@ -91,7 +91,6 @@ else
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/kickstarter"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-arrays"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-files"
-    php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-lock"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-mediatypes"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-objecthandling"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-opcodecache"
