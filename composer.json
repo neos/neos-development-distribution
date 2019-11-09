@@ -21,6 +21,8 @@
     "neos/demo": "@dev",
     "neos/neos-ui": "@dev",
     "neos/neos-ui-compiled": "@dev",
+    "neos/fusion-afx": "@dev",
+    "neos/fusion-form": "@dev",
     "neos/party": "@dev",
     "neos/seo": "@dev",
     "neos/imagine": "@dev",
