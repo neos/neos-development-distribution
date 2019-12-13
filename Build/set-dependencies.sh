@@ -61,7 +61,6 @@ echo "Setting distribution dependencies"
 
 # Require exact versions of the main packages
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/nodetypes:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/site-kickstarter:${VERSION}"
 
 # Require exact versions of sub dependency packages, allowing unstable
@@ -97,6 +96,7 @@ else
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-pdo"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-schema"
     php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-unicode"
+    php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/http-factories"
 fi
 
 commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Distribution"
