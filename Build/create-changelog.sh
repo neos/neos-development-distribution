@@ -84,6 +84,8 @@ perl -p -i -e 's|^Migration?:.*$||g' ${TARGET}
 perl -p -i -e 's|^Reviewed-by?:.*$||g' ${TARGET}
 perl -p -i -e 's|^Reviewed-on?:.*$||g' ${TARGET}
 perl -p -i -e 's|^Tested-by?:.*$||g' ${TARGET}
+perl -00 -i -pe 's|<!--.*?-->\s*||gs' ${TARGET}
+perl -00 -p -i -e 's|\*\*Checklist\*\*.*?(- \[.\].*?[\r\n]+)+||gs' ${TARGET}
 
 # Link issues to Jira
 perl -p -i -e 's/(Fixes|Resolves|Related|Relates): (NEOS|FLOW)-([0-9]+)/* $1: `$2-$3 <https:\/\/jira.neos.io\/browse\/$2-$3>`_/g' ${TARGET}
