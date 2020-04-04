@@ -47,6 +47,7 @@ ln -s composer-1.5.2.phar composer.phar
 # replace flow-development-collection dev-master dependency with dev-branch in .composer.json
 S_FLOW_DEV_BRANCH=$(echo "${FLOW_BRANCH}.x-dev" | sed -e 's/[]$.*[\^\/]/\\&/g')
 sed -i -e "s/flow-development-collection\": \"dev-master\"/flow-development-collection\": \"${S_FLOW_DEV_BRANCH}\"/" Packages/Neos/.composer.json
+cd Packages/Neos && git add .composer.json; cd -
 
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}" || exit 1
 
