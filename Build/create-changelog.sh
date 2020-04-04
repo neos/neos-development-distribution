@@ -4,12 +4,12 @@ set -e
 # Generates a changelog in reStructuredText from the commit history of
 # the packages in Packages/Neos:
 #
-# - TYPO3.Media
-# - TYPO3.Neos
-# - TYPO3.Neos.Kickstarter
-# - TYPO3.Neos.NodeTypes
-# - TYPO3.TYPO3CR
-# - TYPO3.TypoScript
+# - Neos.Media
+# - Neos.Neos
+# - Neos.Neos.Kickstarter
+# - Neos.Neos.NodeTypes
+# - Neos.TYPO3CR
+# - Neos.TypoScript
 #
 # Needs the following environment variables
 #
