@@ -16,10 +16,6 @@ if [ -z "$BRANCH" ]; then echo "\$BRANCH not set"; exit 1; fi
 if [ -z "$FLOW_BRANCH" ]; then echo "\$FLOW_BRANCH not set"; exit 1; fi
 if [ -z "$BUILD_URL" ]; then echo "\$BUILD_URL not set"; exit 1; fi
 
-if [ ! -e "composer-1.5.2.phar" ]; then
-    curl -L https://github.com/composer/composer/releases/download/1.5.2/composer.phar > composer-1.5.2.phar
-fi
-
 if [ ! -e "composer.phar" ]; then
     ln -s /usr/local/bin/composer.phar composer.phar
 fi
@@ -39,10 +35,6 @@ push_branch "${BRANCH}" "Distribution"
 # branch development collection
 cd Packages/Neos && git checkout -b "${BRANCH}" origin/master ; cd -
 push_branch "${BRANCH}" "Packages/Neos"
-
-# use old composer.phar to work around https://github.com/composer/composer/issues/7800
-rm composer.phar
-ln -s composer-1.5.2.phar composer.phar
 
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}" || exit 1
 
@@ -64,7 +56,3 @@ php ./composer.phar --working-dir=Distribution require --no-update "neos/flow-de
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}" || exit 1
 
 push_branch "${BRANCH}" "Distribution"
-
-# undo "use old composer.phar to work around https://github.com/composer/composer/issues/7800"
-rm composer.phar
-ln -s /usr/local/bin/composer.phar composer.phar
