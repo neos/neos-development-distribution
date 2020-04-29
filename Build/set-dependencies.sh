@@ -113,7 +113,12 @@ php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fluid-adaptor:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.SiteKickstarter require --no-update "neos/kickstarter:~${FLOW_BRANCH}.0"
 
+# replace flow-development-collection dev-master dependency with dev-branch in .composer.json
+S_FLOW_DEV_BRANCH=$(echo "${FLOW_BRANCH}.x-dev" | sed -e 's/[]$.*[\^\/]/\\&/g')
+sed -i -e "s/flow-development-collection\": \"dev-master\"/flow-development-collection\": \"${S_FLOW_DEV_BRANCH}\"/" Packages/Neos/.composer.json
+
 cd Packages/Neos
+git add .composer.json
 php ../../Build/BuildEssentials/ComposerManifestMerger.php
 cd -
 
