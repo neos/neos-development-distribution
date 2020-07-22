@@ -4,6 +4,7 @@
 /Build/Reports
 /Build/Resources
 /Configuration/
+!/Configuration/Settings.Migration.yaml
 /Data/
 /Packages/
 /Web/
