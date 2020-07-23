@@ -71,4 +71,15 @@ Run Behat tests
 
 .. code:: bash
 
-  bin/behat -c Packages/CR/Neos.EventSourcedContentRepository/Tests/Behavior/behat.yml.dist
+  cd Packages/CR/Neos.EventSourcedContentRepository/Tests/Behavior
+  ../../../../../bin/behat -c behat.yml.dist
+
+to run all tests and
+
+.. code:: bash
+
+  cd Packages/CR/Neos.EventSourcedContentRepository/Tests/Behavior
+  ../../../../../bin/behat -c behat.yml.dist <feature-path>:<line-number>
+
+to run specific features, for example `../../../../../bin/behat -c behat.yml.dist Features/EventSourced/ContentStreamForking/ForkContentStreamWithDisabledNodesWithoutDimensions.feature:7
+
