@@ -39,3 +39,7 @@ Neos:
             label: Latvian
             resolution:
               value: lv
+
+  Neos:
+    Ui:
+      frontendDevelopmentMode: true
