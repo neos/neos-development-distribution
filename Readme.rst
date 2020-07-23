@@ -37,15 +37,7 @@ Quick Start
   ./flow site:import --package-key=Neos.Demo
   ./flow contentrepositorymigrate:run
 
-4. (Re)build Neos Ui assets
-
-.. code:: bash
-
-  cd Packages/Application/Neos.Neos.Ui
-  make setup
-  cd -
-
-5. Create Neos backend account (optionally)
+4. Create Neos backend account (optionally)
 
 .. code:: bash
 
