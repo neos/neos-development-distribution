@@ -32,13 +32,23 @@ Quick Start
 3. Migrate database, import & migrate site
   
 .. code:: bash
+
   ./flow doctrine:migrate
   ./flow site:import --package-key=Neos.Demo
   ./flow contentrepositorymigrate:run
 
-4. Create Neos backend account (optionally)
+4. (Re)build Neos Ui assets
 
 .. code:: bash
+
+  cd Packages/Application/Neos.Neos.Ui
+  make setup
+  cd -
+
+5. Create Neos backend account (optionally)
+
+.. code:: bash
+
   ./flow user:create --roles Administrator admin password My Admin
 
 
