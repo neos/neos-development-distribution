@@ -81,5 +81,4 @@ to run all tests and
   cd Packages/CR/Neos.EventSourcedContentRepository/Tests/Behavior
   ../../../../../bin/behat -c behat.yml.dist <feature-path>:<line-number>
 
-to run specific features, for example `../../../../../bin/behat -c behat.yml.dist Features/EventSourced/ContentStreamForking/ForkContentStreamWithDisabledNodesWithoutDimensions.feature:7`
-
+to run specific features, for example ``../../../../../bin/behat -c behat.yml.dist Features/EventSourced/ContentStreamForking/ForkContentStreamWithDisabledNodesWithoutDimensions.feature:7``
