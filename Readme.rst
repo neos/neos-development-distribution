@@ -10,6 +10,7 @@ Quick Start
 1. Clone Repository
 
 .. code:: bash
+
   cd /your/local/path
   git clone --single-branch --branch event-sourced https://github.com/neos/neos-development-distribution.git .
   composer install
@@ -23,6 +24,7 @@ Quick Start
 2. Configure Database connection in ``Configuration/Settings.yaml``:
 
 .. code:: yaml
+
   Neos:
     Flow:
       persistence:
@@ -52,6 +54,7 @@ Run Behat tests
 1. Configure Testing Database connection in ``Configuration/Testing/Behat/Settings.yaml``:
 
 .. code:: yaml
+
   Neos:
     Flow:
       persistence:
@@ -65,9 +68,11 @@ Run Behat tests
 2. Setup behat test runner
 
 .. code:: bash
+
   ./flow behat:setup
 
 3. Run behat tests
 
 .. code:: bash
+
   bin/behat -c Packages/CR/Neos.EventSourcedContentRepository/Tests/Behavior/behat.yml.dist
