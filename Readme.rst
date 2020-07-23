@@ -37,8 +37,7 @@ Quick Start
   ./flow site:import --package-key=Neos.Demo
   ./flow contentrepositorymigrate:run
   
-NOTE: The output of the ``contentrepositorymigrate:run`` command is still a little weird; showing lots of var_dumps. When this command does	
-      not show a fatal error, it ran through successfully.
+NOTE: The output of the ``contentrepositorymigrate:run`` command is still a little weird; showing lots of var_dumps. When this command does	not show a fatal error, it ran through successfully.
 
 4. Create Neos backend account (optionally)
 
