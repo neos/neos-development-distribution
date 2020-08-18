@@ -1,63 +1,68 @@
 {
-  "name": "neos/neos-development-distribution",
-  "description": "Neos Development Distribution",
-  "license": "GPL-3.0-or-later",
-  "support": {
-    "email": "hello@neos.io",
-    "slack": "http://slack.neos.io/",
-    "forum": "https://discuss.neos.io/",
-    "wiki": "https://discuss.neos.io/c/the-neos-project/project-documentation",
-    "issues": "https://github.com/neos/neos-development-collection/issues",
-    "docs": "http://neos.readthedocs.io/",
-    "source": "https://github.com/neos/neos-development-distribution"
-  },
-  "config": {
-    "vendor-dir": "Packages/Libraries",
-    "bin-dir": "bin"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/neos/contentrepository-development-collection.git"
+    "name": "neos/neos-development-distribution",
+    "description": "Neos Development Distribution",
+    "license": "GPL-3.0-or-later",
+    "support": {
+        "email": "hello@neos.io",
+        "slack": "http://slack.neos.io/",
+        "forum": "https://discuss.neos.io/",
+        "wiki": "https://discuss.neos.io/c/the-neos-project/project-documentation",
+        "issues": "https://github.com/neos/neos-development-collection/issues",
+        "docs": "http://neos.readthedocs.io/",
+        "source": "https://github.com/neos/neos-development-distribution"
     },
-    {
-      "type": "git",
-      "url": "https://github.com/neos/content-repository-dimensionspace.git"
+    "config": {
+        "vendor-dir": "Packages/Libraries",
+        "bin-dir": "bin",
+        "preferred-install": "source"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/neos/contentrepository-development-collection.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/neos/content-repository-dimensionspace.git"
+        }
+    ],
+    "require": {
+        "neos/neos-development-collection": "@dev",
+        "neos/flow-development-collection": "@dev",
+        "neos/contentrepository-development-collection": "dev-task/introduce-composer-patching",
+        "neos/content-repository-dimensionspace": "dev-master",
+        "neos/event-sourcing": "^2.0",
+        "flowpack/jobqueue-common": "dev-master",
+        "neos/demo": "@dev",
+        "neos/neos-ui": "dev-master",
+        "neos/neos-ui-compiled": "dev-master",
+        "neos/party": "@dev",
+        "neos/seo": "@dev",
+        "neos/imagine": "@dev",
+        "neos/twitter-bootstrap": "@dev",
+        "neos/form": "@dev",
+        "neos/setup": "@dev",
+        "flowpack/neos-frontendlogin": "@dev",
+        "neos/buildessentials": "@dev",
+        "mikey179/vfsstream": "~1.6",
+        "phpunit/phpunit": "~7.1.0",
+        "symfony/css-selector": "~2.0",
+        "neos/behat": "dev-master",
+        "cweagans/composer-patches": "dev-master#a18d1ca38ae09d16aa21846f60649d99d6775639"
     }
-  ],
-  "require": {
-    "neos/neos-development-collection": "@dev",
-    "neos/flow-development-collection": "@dev",
-
-    "neos/contentrepository-development-collection": "dev-master",
-    "neos/content-repository-dimensionspace": "dev-master",
-    "neos/event-sourcing": "^2.0",
-    "flowpack/jobqueue-common": "dev-master",
-
-    "neos/demo": "@dev",
-
-    "neos/neos-ui": "dev-master",
-    "neos/neos-ui-compiled": "dev-master",
-
-    "neos/party": "@dev",
-    "neos/seo": "@dev",
-    "neos/imagine": "@dev",
-    "neos/twitter-bootstrap": "@dev",
-    "neos/form": "@dev",
-    "neos/setup": "@dev",
-    "flowpack/neos-frontendlogin": "@dev",
-    "neos/buildessentials": "@dev",
-    "mikey179/vfsstream": "~1.6",
-    "phpunit/phpunit": "~7.1.0",
-    "symfony/css-selector": "~2.0",
-    "neos/behat": "dev-master"
-  },
-  "scripts": {
-    "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-    "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-    "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-    "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
-  }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "scripts": {
+        "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+    },
+    "extra": {
+        "patches-file": "Packages/CR/Neos.EventSourcedNeosAdjustments/composer.patches.json"
+    }
 }
