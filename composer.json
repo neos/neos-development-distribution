@@ -31,7 +31,7 @@
     "require": {
         "neos/neos-development-collection": "@dev",
         "neos/flow-development-collection": "@dev",
-        "neos/contentrepository-development-collection": "dev-task/introduce-composer-patching",
+        "neos/contentrepository-development-collection": "@dev",
         "neos/content-repository-dimensionspace": "dev-master",
         "neos/event-sourcing": "^2.0",
         "flowpack/jobqueue-common": "dev-master",
@@ -54,7 +54,8 @@
     }
     ,
     "require-dev": {
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "dg/bypass-finals": "^1.2"
     },
     "scripts": {
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
