@@ -16,6 +16,7 @@ set -e
 # VERSION          the version that is "to be released"
 # PREVIOUS_VERSION the last released version, is guessed if not given
 # BUILD_URL        used in commit message (optional)
+# GITHUB_TOKEN     to authenticate github calls and avoid API limits
 #
 
 if [ -z "$VERSION" ]; then echo "\$VERSION not set"; exit 1; fi
@@ -36,16 +37,13 @@ echo -e "\nOverview of merged pull requests\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 
 # Loop over merge commits since previous version
 for mergeCommit in $(git log $PREVIOUS_VERSION.. --grep="^Merge pull request" --oneline | cut -d ' ' -f1); do
-    echo
-    echo $mergeCommit
 	pullRequest=$(git show $mergeCommit --no-patch --oneline | cut -d ' ' -f5 | cut -c2-)
+  echo "fetching info from https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest"
 	if [ -z "$GITHUB_TOKEN" ];
 	then
-		echo "fetching info from https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest"
 		curl -sS "https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest" > pr
 	else
-		echo "fetching info from https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest?access_token=<...>"
-		curl -sS "https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest?access_token=$GITHUB_TOKEN" > pr
+		curl -H "Authorization: token ${GITHUB_TOKEN}" -sS "https://api.github.com/repos/neos/neos-development-collection/pulls/$pullRequest" > pr
 	fi
 	if [[ $(cat pr | jq '.message') != "null" ]]; then cat pr | jq -r '.message'; continue; fi
 	echo "\`"$(cat pr | jq -r '.title' | sed 's/`/\\`/g')" <"https://github.com/neos/neos-development-collection/pull/$pullRequest">\`_" >> $TARGET
