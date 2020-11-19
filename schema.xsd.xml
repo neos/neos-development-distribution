@@ -1,0 +1,37 @@
+<SDDataServiceRequest Action="Edit" BusinessObjectType="string" IncludeGermanSpecifiers="true" IncludeBusinessObjectSpecifiers="true" IncludeMetadata="true" IncludeData="true" IncludeNavigationUris="true" IncludeHiddenFields="true" IncludeDocumentsCount="false" IncludeDocumentsPermissions="false" SortDefault="false" Intent="Grid" RowSourceAttribute="string" QueryName="string" MethodName="string" MasterId="3">
+  <!--Optional:-->
+  <Select>
+    <!--Zero or more repetitions:-->
+    <SDField Name="string" Classifier="string" DataType="Binary" DisplayNameAttribute="string" DisplayNameField="string" GermanSpecifier="string" Uri="string" AttributeFormPosition="3" AttributeGridPosition="3" AttributeGroupName="string" AttributeGroupDisplayName="string" AttributeGroupIndex="3" AttributeDisplayFields="string" FieldFormPosition="3" FieldGridPosition="3" FieldIsForeignKeyAttributename="false" ReadOnly="true" Filterable="false" Sortable="false" ExtraColumn="false" Databound="false" Format="string"/>
+  </Select>
+  <!--Optional:-->
+  <Filter Type="Condition" GroupOperator="Or" Field="string" Classifier="string" Operator="lte" Value="string">
+    turbine
+    <!--Zero or more repetitions:-->
+    <FilterItem/>
+    iovis
+  </Filter>
+  <!--Optional:-->
+  <Sort>
+    <!--Zero or more repetitions:-->
+    <Field Name="string" Direction="Asc" Classifier="string"/>
+  </Sort>
+  <!--Optional:-->
+  <Paging Start="3" Size="3"/>
+  <!--Optional:-->
+  <Data>anyType</Data>
+  <!--Optional:-->
+  <QueryParameters>anyType</QueryParameters>
+  <!--Optional:-->
+  <MethodArguments>anyType</MethodArguments>
+  <!--Optional:-->
+  <InfoEventResults>
+    <!--Zero or more repetitions:-->
+    <SDInfoEventResult>
+      <!--Optional:-->
+      <ID>string</ID>
+      <!--Optional:-->
+      <DialogResult>string</DialogResult>
+    </SDInfoEventResult>
+  </InfoEventResults>
+</SDDataServiceRequest>

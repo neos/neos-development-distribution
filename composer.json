@@ -41,7 +41,9 @@
     "neos/fusion": "5.3.x-dev",
     "neos/media": "5.3.x-dev",
     "neos/media-browser": "5.3.x-dev",
-    "neos/diff": "5.3.x-dev"
+    "neos/diff": "5.3.x-dev",
+    "neos/event-sourcing": "dev-master",
+    "flowpack/jobqueue-doctrine": "^3.0"
   },
   "suggest": {
     "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

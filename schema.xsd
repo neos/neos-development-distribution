@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="SDDataServiceRequest" nillable="true" type="SDDataServiceRequest"/>
+    <xs:complexType name="SDDataServiceRequest">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="Select" type="ArrayOfSDField"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="Filter" type="SDFilter"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="Sort" type="ArrayOfSDSortField"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="Paging" type="SDPaging"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="Data"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="QueryParameters"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="MethodArguments"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="InfoEventResults" type="ArrayOfSDInfoEventResult"/>
+        </xs:sequence>
+        <xs:attribute name="Action" type="SDActionType" use="required"/>
+        <xs:attribute name="BusinessObjectType" type="xs:string"/>
+        <xs:attribute name="IncludeGermanSpecifiers" type="xs:boolean" use="required"/>
+        <xs:attribute name="IncludeBusinessObjectSpecifiers" type="xs:boolean" use="required"/>
+        <xs:attribute name="IncludeMetadata" type="xs:boolean" use="required"/>
+        <xs:attribute name="IncludeData" type="xs:boolean" use="required"/>
+        <xs:attribute name="IncludeNavigationUris" type="xs:boolean" use="required"/>
+        <xs:attribute name="IncludeHiddenFields" type="xs:boolean" use="required"/>
+        <xs:attribute name="IncludeDocumentsCount" type="xs:boolean" use="required"/>
+        <xs:attribute name="IncludeDocumentsPermissions" type="xs:boolean" use="required"/>
+        <xs:attribute name="SortDefault" type="xs:boolean" use="required"/>
+        <xs:attribute name="Intent" type="SDRepresentationIntent" use="required"/>
+        <xs:attribute name="RowSourceAttribute" type="xs:string"/>
+        <xs:attribute name="QueryName" type="xs:string"/>
+        <xs:attribute name="MethodName" type="xs:string"/>
+        <xs:attribute name="MasterId" type="xs:int" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="ArrayOfSDField">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="SDField" type="SDField"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SDField">
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Classifier" type="xs:string"/>
+        <xs:attribute name="DataType" type="SDDataType" use="required"/>
+        <xs:attribute name="DisplayNameAttribute" type="xs:string"/>
+        <xs:attribute name="DisplayNameField" type="xs:string"/>
+        <xs:attribute name="GermanSpecifier" type="xs:string"/>
+        <xs:attribute name="Uri" type="xs:string"/>
+        <xs:attribute name="AttributeFormPosition" type="xs:int" use="required"/>
+        <xs:attribute name="AttributeGridPosition" type="xs:int" use="required"/>
+        <xs:attribute name="AttributeGroupName" type="xs:string"/>
+        <xs:attribute name="AttributeGroupDisplayName" type="xs:string"/>
+        <xs:attribute name="AttributeGroupIndex" type="xs:int" use="required"/>
+        <xs:attribute name="AttributeDisplayFields" type="xs:string"/>
+        <xs:attribute name="FieldFormPosition" type="xs:int" use="required"/>
+        <xs:attribute name="FieldGridPosition" type="xs:int" use="required"/>
+        <xs:attribute name="FieldIsForeignKeyAttributename" type="xs:boolean" use="required"/>
+        <xs:attribute name="ReadOnly" type="xs:boolean" use="required"/>
+        <xs:attribute name="Filterable" type="xs:boolean" use="required"/>
+        <xs:attribute name="Sortable" type="xs:boolean" use="required"/>
+        <xs:attribute name="ExtraColumn" type="xs:boolean" use="required"/>
+        <xs:attribute name="Databound" type="xs:boolean" use="required"/>
+        <xs:attribute name="Format" type="xs:string"/>
+    </xs:complexType>
+    <xs:simpleType name="SDDataType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Binary"/>
+            <xs:enumeration value="Boolean"/>
+            <xs:enumeration value="Byte"/>
+            <xs:enumeration value="Currency"/>
+            <xs:enumeration value="DateTime"/>
+            <xs:enumeration value="Decimal"/>
+            <xs:enumeration value="Double"/>
+            <xs:enumeration value="Geometry"/>
+            <xs:enumeration value="GUID"/>
+            <xs:enumeration value="Integer"/>
+            <xs:enumeration value="String"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="SDFilter" mixed="true">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="FilterItem" type="SDFilter"/>
+        </xs:sequence>
+        <xs:attribute default="Condition" name="Type" type="SDFilterType"/>
+        <xs:attribute name="GroupOperator" type="SDBooleanOperator" use="required"/>
+        <xs:attribute name="Field" type="xs:string"/>
+        <xs:attribute name="Classifier" type="xs:string"/>
+        <xs:attribute name="Operator" type="SDComparisonOperator" use="required"/>
+        <xs:attribute name="Value" type="xs:string"/>
+    </xs:complexType>
+    <xs:simpleType name="SDFilterType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Group"/>
+            <xs:enumeration value="Condition"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SDBooleanOperator">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="And"/>
+            <xs:enumeration value="Or"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SDComparisonOperator">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="eq"/>
+            <xs:enumeration value="neq"/>
+            <xs:enumeration value="gt"/>
+            <xs:enumeration value="gte"/>
+            <xs:enumeration value="lt"/>
+            <xs:enumeration value="lte"/>
+            <xs:enumeration value="contains"/>
+            <xs:enumeration value="doesnotcontain"/>
+            <xs:enumeration value="startswith"/>
+            <xs:enumeration value="endswith"/>
+            <xs:enumeration value="isnull"/>
+            <xs:enumeration value="notnull"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="ArrayOfSDSortField">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" type="SDSortField"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SDSortField">
+        <xs:attribute name="Name" type="xs:string"/>
+        <xs:attribute name="Direction" type="SDSortDirection" use="required"/>
+        <xs:attribute name="Classifier" type="xs:string"/>
+    </xs:complexType>
+    <xs:simpleType name="SDSortDirection">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Asc"/>
+            <xs:enumeration value="Desc"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="SDPaging">
+        <xs:attribute name="Start" type="xs:int" use="required"/>
+        <xs:attribute name="Size" type="xs:int" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="ArrayOfSDInfoEventResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="SDInfoEventResult" nillable="true" type="SDInfoEventResult"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SDInfoEventResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="ID" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="DialogResult" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="SDActionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Get"/>
+            <xs:enumeration value="GetQuery"/>
+            <xs:enumeration value="GetDefaults"/>
+            <xs:enumeration value="GetRowSource"/>
+            <xs:enumeration value="Insert"/>
+            <xs:enumeration value="Update"/>
+            <xs:enumeration value="Edit"/>
+            <xs:enumeration value="Delete"/>
+            <xs:enumeration value="Execute"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SDRepresentationIntent">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Grid"/>
+            <xs:enumeration value="Form"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
