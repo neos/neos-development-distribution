@@ -31,7 +31,7 @@ php Build/BuildEssentials/Crowdin/Teardown.php `pwd`/crowdin.json
 cd Packages/Framework
 echo 'Commit and push to Framework'
 git ls-files -o | grep 'Translations' | xargs git add
-git commit -am 'TASK: Update translations from translation tool' || true
+git commit -am 'TASK: Update translations from translation tool [skip travis]' || true
 git pull --rebase
 git config push.default simple
 git push origin
@@ -41,7 +41,7 @@ cd -
 cd Packages/Neos
 echo 'Commit and push to Neos'
 git ls-files -o | grep 'Translations' | xargs git add
-git commit -am 'TASK: Update translations from translation tool' || true
+git commit -am 'TASK: Update translations from translation tool [skip travis]' || true
 git pull --rebase
 git config push.default simple
 git push origin
@@ -52,7 +52,7 @@ for PACKAGE in Neos.Form Neos.GoogleAnalytics Neos.Party Neos.Seo ; do
     echo "Commit and push to ${PACKAGE}"
     cd Packages/Application/${PACKAGE}
     git ls-files -o | grep 'Translations' | xargs git add
-    git commit -am 'TASK: Update translations from translation tool' || true
+    git commit -am 'TASK: Update translations from translation tool [skip travis]' || true
     git pull --rebase
     git config push.default simple
     git push origin
