@@ -43,6 +43,12 @@
     "neos/media-browser": "5.2.x-dev",
     "neos/diff": "5.2.x-dev"
   },
+  "repositories": {
+    "distributionPackages": {
+      "type": "path",
+      "url": "./DistributionPackages/*"
+    }
+  },
   "suggest": {
     "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
   },
