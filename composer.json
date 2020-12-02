@@ -36,6 +36,12 @@
     "symfony/css-selector": "^2.0",
     "neos/behat": "dev-master"
   },
+  "repositories": {
+    "distributionPackages": {
+      "type": "path",
+      "url": "./DistributionPackages/*"
+    }
+  },
   "suggest": {
     "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
   },
