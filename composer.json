@@ -19,7 +19,7 @@
     "neos/neos-development-collection": "7.0.x-dev",
     "neos/flow-development-collection": "7.0.x-dev",
     "neos/demo": "@dev",
-    "neos/neos-ui": "^7.0@dev",
+    "neos/neos-ui": "7.0.x-dev",
     "neos/neos-ui-compiled": "@dev",
     "neos/fusion-afx": "@dev",
     "neos/fusion-form": "@dev",
