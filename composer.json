@@ -53,7 +53,7 @@
     "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
     "test-unit": "phpunit -c Build/BuildEssentials/PhpUnit/UnitTests.xml",
     "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml",
-    "test-static": "psalm --config=Packages/Framework/psalm.xml --show-info=false",
-    "psalm-baseline-update": "psalm --config=Packages/Framework/psalm.xml --set-baseline=Packages/Framework/psalm-baseline.xml"
+    "test-static-flow": "psalm --config=Packages/Framework/psalm.xml --show-info=false",
+    "psalm-baseline-update-flow": "psalm --config=Packages/Framework/psalm.xml --set-baseline=Packages/Framework/psalm-baseline.xml"
   }
 }
