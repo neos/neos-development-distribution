@@ -34,7 +34,7 @@
     "mikey179/vfsstream": "^1.6",
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
-    "neos/behat": "dev-master",
+    "neos/behat": "7.0.x-dev",
     "neos/neos": "7.0.x-dev",
     "neos/site-kickstarter": "7.0.x-dev",
     "neos/content-repository": "7.0.x-dev",
