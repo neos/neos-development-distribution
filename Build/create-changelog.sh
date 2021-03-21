@@ -4,12 +4,12 @@ set -e
 # Generates a changelog in reStructuredText from the commit history of
 # the packages in Packages/Neos:
 #
-# - TYPO3.Media
-# - TYPO3.Neos
-# - TYPO3.Neos.Kickstarter
-# - TYPO3.Neos.NodeTypes
-# - TYPO3.TYPO3CR
-# - TYPO3.TypoScript
+# - Neos.Media
+# - Neos.Neos
+# - Neos.Kickstarter
+# - Neos.NodeTypes
+# - Neos.ContentRepository
+# - Neos.Fusion
 #
 # Needs the following environment variables
 #
@@ -108,8 +108,8 @@ perl -p -i -0 -e 's/(\* [^\n]+)\n+(\* [^\n]+)/$1\n$2/g' ${TARGET}
 git add ${TARGET}
 if [ -z "$BUILD_URL" ]
 then
-	git commit -m "TASK: Add changelog for ${VERSION}" || echo " nothing to commit "
+	git commit -m "TASK: Add changelog for ${VERSION} [skip ci]" || echo " nothing to commit "
 else
-	git commit -m "TASK: Add changelog for ${VERSION}" -m "See $BUILD_URL" || echo " nothing to commit "
+	git commit -m "TASK: Add changelog for ${VERSION} [skip ci]" -m "See $BUILD_URL" || echo " nothing to commit "
 fi
 cd -
