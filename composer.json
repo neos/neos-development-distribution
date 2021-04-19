@@ -16,8 +16,8 @@
     "bin-dir": "bin"
   },
   "require": {
-    "neos/neos-development-collection": "@dev",
-    "neos/flow-development-collection": "@dev",
+    "neos/neos-development-collection": "7.1.x-dev",
+    "neos/flow-development-collection": "7.1.x-dev",
     "neos/demo": "@dev",
     "neos/neos-ui": "@dev",
     "neos/neos-ui-compiled": "@dev",
@@ -35,7 +35,14 @@
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
     "neos/behat": "@dev",
-    "vimeo/psalm": "~4.1.0"
+    "vimeo/psalm": "~4.1.0",
+    "neos/neos": "7.1.x-dev",
+    "neos/site-kickstarter": "7.1.x-dev",
+    "neos/content-repository": "7.1.x-dev",
+    "neos/fusion": "7.1.x-dev",
+    "neos/media": "7.1.x-dev",
+    "neos/media-browser": "7.1.x-dev",
+    "neos/diff": "7.1.x-dev"
   },
   "repositories": {
     "distributionPackages": {
