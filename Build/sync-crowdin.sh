@@ -16,7 +16,7 @@ if [ ! -e "composer.phar" ]; then
 fi
 
 # we have this on crowdin as well, install it
-php composer.phar require --prefer-source --no-interaction --no-progress neos/googleanalytics '@dev'
+php composer.phar require --prefer-source --no-interaction --no-progress --no-update neos/googleanalytics '@dev'
 
 # update packages
 php composer.phar update --no-interaction --no-progress
