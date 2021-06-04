@@ -35,7 +35,8 @@
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
     "neos/behat": "@dev",
-    "vimeo/psalm": "~4.1.0"
+    "vimeo/psalm": "~4.1.0",
+    "neos/doctools": "^3.3"
   },
   "repositories": {
     "distributionPackages": {
