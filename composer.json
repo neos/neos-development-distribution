@@ -42,7 +42,8 @@
     "neos/fusion": "7.1.x-dev",
     "neos/media": "7.1.x-dev",
     "neos/media-browser": "7.1.x-dev",
-    "neos/diff": "7.1.x-dev"
+    "neos/diff": "7.1.x-dev",
+    "neos/doctools": "^3.3"
   },
   "repositories": {
     "distributionPackages": {
