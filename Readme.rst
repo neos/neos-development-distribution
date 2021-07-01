@@ -27,7 +27,7 @@ For details see https://discuss.neos.io/t/development-setup
 web server configuration
 ------------------------
 
-See https://www.neos.io/develop/download.html#setting-up-neos
+See https://docs.neos.io/cms/contributing-to-neos
 
 how to push changes
 -------------------
