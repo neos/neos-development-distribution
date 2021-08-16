@@ -52,3 +52,8 @@ echo "Tagging development collection"
 tag_version "${VERSION}" "${BRANCH}" "${BUILD_URL}" "Packages/Neos"
 push_branch "${BRANCH}" "Packages/Neos"
 push_tag "${VERSION}" "Packages/Neos"
+
+echo "Tagging demo package"
+tag_version "${VERSION}" "${BRANCH}" "${BUILD_URL}" "Packages/Sites/Neos.Demo"
+push_branch "${BRANCH}" "Packages/Sites/Neos.Demo"
+push_tag "${VERSION}" "Packages/Sites/Neos.Demo"
