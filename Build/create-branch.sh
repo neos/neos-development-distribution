@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Create a new branch for the distribution and the development collection
+# Create a new branch for the distribution, the development collection and the demo site
 #
 # Expects the following environment variables:
 #
@@ -36,10 +36,15 @@ push_branch "${BRANCH}" "Distribution"
 cd Packages/Neos && git checkout -b "${BRANCH}" origin/master ; cd -
 push_branch "${BRANCH}" "Packages/Neos"
 
+# branch demo site
+cd Packages/Sites/Neos.Demo && git checkout -b "${BRANCH}" origin/master ; cd -
+push_branch "${BRANCH}" "Packages/Sites/Neos.Demo"
+
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}" || exit 1
 
 push_branch "${BRANCH}" "Distribution"
 push_branch "${BRANCH}" "Packages/Neos"
+push_branch "${BRANCH}" "Packages/Sites/Neos.Demo"
 
 # same procedure again with the Development Distribution
 
