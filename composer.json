@@ -15,7 +15,8 @@
     "vendor-dir": "Packages/Libraries",
     "bin-dir": "bin",
     "preferred-install": {
-      "neos/*": "source"
+      "neos/*": "source",
+      "flowpack/*": "source"
     }
   },
   "require": {
