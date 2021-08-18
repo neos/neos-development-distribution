@@ -13,7 +13,11 @@
   },
   "config": {
     "vendor-dir": "Packages/Libraries",
-    "bin-dir": "bin"
+    "bin-dir": "bin",
+    "preferred-install": {
+      "neos/*": "source",
+      "flowpack/*": "source"
+    }
   },
   "require": {
     "neos/neos-development-collection": "@dev",
