@@ -20,8 +20,8 @@
     }
   },
   "require": {
-    "neos/neos-development-collection": "@dev",
-    "neos/flow-development-collection": "@dev",
+    "neos/neos-development-collection": "dev-master",
+    "neos/flow-development-collection": "dev-master",
     "neos/demo": "@dev",
     "neos/neos-ui": "@dev",
     "neos/neos-ui-compiled": "@dev",
