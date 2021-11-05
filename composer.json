@@ -42,7 +42,8 @@
         "neos/fusion": "4.3.x-dev",
         "neos/media": "4.3.x-dev",
         "neos/media-browser": "4.3.x-dev",
-        "neos/diff": "4.3.x-dev"
+        "neos/diff": "4.3.x-dev",
+        "neos/doctools": "^3.3"
     },
     "repositories": {
         "distributionPackages": {
