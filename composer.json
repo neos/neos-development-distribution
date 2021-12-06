@@ -20,9 +20,9 @@
     }
   },
   "require": {
-    "neos/neos-development-collection": "dev-master",
-    "neos/flow-development-collection": "dev-master",
-    "neos/demo": "@dev",
+    "neos/neos-development-collection": "7.3.x-dev",
+    "neos/flow-development-collection": "7.3.x-dev",
+    "neos/demo": "7.3.x-dev",
     "neos/neos-ui": "@dev",
     "neos/neos-ui-compiled": "@dev",
     "neos/fusion-afx": "@dev",
@@ -34,13 +34,19 @@
     "neos/form": "@dev",
     "neos/setup": "@dev",
     "flowpack/neos-frontendlogin": "@dev",
-    "neos/buildessentials": "@dev",
     "mikey179/vfsstream": "^1.6",
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
-    "neos/behat": "@dev",
     "vimeo/psalm": "~4.1.0",
-    "neos/doctools": "^3.3"
+    "neos/doctools": "^3.3",
+    "neos/neos": "7.3.x-dev",
+    "neos/site-kickstarter": "7.3.x-dev",
+    "neos/cli-setup": "7.3.x-dev",
+    "neos/content-repository": "7.3.x-dev",
+    "neos/fusion": "7.3.x-dev",
+    "neos/media": "7.3.x-dev",
+    "neos/media-browser": "7.3.x-dev",
+    "neos/diff": "7.3.x-dev"
   },
   "repositories": {
     "distributionPackages": {
@@ -61,5 +67,9 @@
     "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml",
     "test-static-flow": "psalm --config=Packages/Framework/psalm.xml --show-info=false",
     "psalm-baseline-update-flow": "psalm --config=Packages/Framework/psalm.xml --set-baseline=Packages/Framework/psalm-baseline.xml"
+  },
+  "require-dev": {
+    "neos/behat": "7.3.x-dev",
+    "neos/buildessentials": "7.3.x-dev"
   }
 }
