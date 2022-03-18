@@ -37,7 +37,7 @@
     "mikey179/vfsstream": "^1.6",
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
-    "vimeo/psalm": "~4.1.0",
+    "vimeo/psalm": "~4.9.3",
     "neos/doctools": "^3.3",
     "neos/neos": "7.3.x-dev",
     "neos/site-kickstarter": "7.3.x-dev",
