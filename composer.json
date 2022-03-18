@@ -34,12 +34,10 @@
     "neos/form": "@dev",
     "neos/setup": "@dev",
     "flowpack/neos-frontendlogin": "@dev",
-    "neos/buildessentials": "@dev",
     "mikey179/vfsstream": "^1.6",
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
-    "neos/behat": "@dev",
-    "vimeo/psalm": "~4.1.0",
+    "vimeo/psalm": "~4.9.3",
     "neos/doctools": "^3.3"
   },
   "repositories": {
@@ -61,5 +59,9 @@
     "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml",
     "test-static-flow": "psalm --config=Packages/Framework/psalm.xml --show-info=false",
     "psalm-baseline-update-flow": "psalm --config=Packages/Framework/psalm.xml --set-baseline=Packages/Framework/psalm-baseline.xml"
+  },
+  "require-dev": {
+    "neos/behat": "@dev",
+    "neos/buildessentials": "@dev"
   }
 }
