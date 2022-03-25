@@ -17,6 +17,9 @@
     "preferred-install": {
       "neos/*": "source",
       "flowpack/*": "source"
+    },
+    "allow-plugins": {
+      "neos/composer-plugin": true
     }
   },
   "require": {
