@@ -26,9 +26,8 @@
     "neos/neos-development-collection": "8.0.x-dev",
     "neos/flow-development-collection": "8.0.x-dev",
     "neos/demo": "8.0.x-dev",
-    "neos/neos-ui": "@dev",
-    "neos/neos-ui-compiled": "@dev",
-    "neos/fusion-afx": "@dev",
+    "neos/neos-ui": "8.0.x-dev",
+    "neos/neos-ui-compiled": "8.0.x-dev",
     "neos/fusion-form": "@dev",
     "neos/party": "@dev",
     "neos/seo": "@dev",
@@ -41,15 +40,7 @@
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
     "vimeo/psalm": "~4.9.3",
-    "neos/doctools": "^3.3",
-    "neos/neos": "8.0.x-dev",
-    "neos/site-kickstarter": "8.0.x-dev",
-    "neos/cli-setup": "8.0.x-dev",
-    "neos/content-repository": "8.0.x-dev",
-    "neos/fusion": "8.0.x-dev",
-    "neos/media": "8.0.x-dev",
-    "neos/media-browser": "8.0.x-dev",
-    "neos/diff": "8.0.x-dev"
+    "neos/doctools": "^3.3"
   },
   "repositories": {
     "distributionPackages": {
