@@ -28,6 +28,9 @@ fi
 composer.phar -vn clear-cache
 composer.phar -vn update
 Build/create-changelog.sh
+if [[ "$VERSION" == *.0 ]]
+  Build/create-releasenotes.sh
+fi
 Build/tag-release.sh "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}"
 
 #
