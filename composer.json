@@ -23,10 +23,10 @@
     }
   },
   "require": {
-    "neos/neos-development-collection": "dev-master",
+    "neos/neos-development-collection": "9.0.x-dev",
     "neos/flow-development-collection": "dev-master",
     "neos/demo": "@dev",
-    "neos/neos-ui": "@dev",
+    "neos/neos-ui": "9.0.x-dev",
     "neos/neos-ui-compiled": "@dev",
     "neos/fusion-afx": "@dev",
     "neos/fusion-form": "@dev",
