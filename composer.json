@@ -41,7 +41,10 @@
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
     "vimeo/psalm": "~4.9.3",
-    "neos/doctools": "^3.3"
+    "neos/doctools": "^3.3",
+    "phpstan/phpstan": "^1.5",
+    "squizlabs/php_codesniffer": "^3.6",
+    "dg/bypass-finals": "^1.2"
   },
   "repositories": {
     "distributionPackages": {
