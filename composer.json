@@ -65,6 +65,7 @@
   },
   "require-dev": {
     "neos/behat": "@dev",
-    "neos/buildessentials": "@dev"
+    "neos/buildessentials": "@dev",
+    "dg/bypass-finals": "^1.2"
   }
 }
