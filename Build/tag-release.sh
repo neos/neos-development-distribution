@@ -13,35 +13,38 @@
 # BUILD_URL        used in commit message
 #
 
-source $(dirname ${BASH_SOURCE[0]})/BuildEssentials/ReleaseHelpers.sh
+source "$(dirname "${BASH_SOURCE[0]}")/BuildEssentials/ReleaseHelpers.sh"
 
-if [ -z "$1" ] ; then
-	echo >&2 "No version specified (e.g. 2.1.*) as first parameter"
-	exit 1
+if [ -z "$1" ]; then
+  echo >&2 "No version specified (e.g. 2.1.*) as first parameter"
+  exit 1
 fi
 VERSION="$1"
 
-if [ -z "$2" ] ; then
-	echo >&2 "No branch specified (e.g. 2.1) as second parameter"
-	exit 1
+if [ -z "$2" ]; then
+  echo >&2 "No branch specified (e.g. 2.1) as second parameter"
+  exit 1
 fi
 BRANCH="$2"
 
-if [ -z "$3" ] ; then
-    echo >&2 "No Flow branch specified (e.g. 3.1) as third parameter."
-    exit 1
+if [ -z "$3" ]; then
+  echo >&2 "No Flow branch specified (e.g. 3.1) as third parameter."
+  exit 1
 fi
 FLOW_BRANCH="$3"
 
-if [ -z "$4" ] ; then
-    echo >&2 "No build URL specified as fourth parameter."
-    exit 1
+if [ -z "$4" ]; then
+  echo >&2 "No build URL specified as fourth parameter."
+  exit 1
 fi
 BUILD_URL="$4"
 
-if [ ! -d "Distribution" ]; then echo '"Distribution" folder not found. Clone the base distribution into "Distribution"'; exit 1; fi
+if [ ! -d "Distribution" ]; then
+  echo '"Distribution" folder not found. Clone the base distribution into "Distribution"'
+  exit 1
+fi
 
-$(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}" || exit 1
+"$(dirname "${BASH_SOURCE[0]}")/set-dependencies.sh" "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}" || exit 1
 
 echo "Tagging distribution"
 tag_version "${VERSION}" "${BRANCH}" "${BUILD_URL}" "Distribution"
