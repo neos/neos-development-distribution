@@ -5,6 +5,7 @@
 #
 # Expects the following environment variables:
 #
+# SOURCE_BRANCH    the branch that will be used as source
 # BRANCH           the branch that will be created
 # FLOW_BRANCH      the corresponding Flow branch for the branch that will be created
 # BUILD_URL        used in commit message
@@ -12,6 +13,10 @@
 
 set -e
 
+if [ -z "${SOURCE_BRANCH}" ]; then
+  echo "\$SOURCE_BRANCH not set"
+  exit 1
+fi
 if [ -z "$BRANCH" ]; then
   echo "\$BRANCH not set"
   exit 1
@@ -38,17 +43,17 @@ rm -rf Distribution
 git clone --no-checkout git@github.com:neos/neos-base-distribution.git Distribution
 
 # branch distribution
-cd Distribution && git checkout -b "${BRANCH}" origin/master
+cd Distribution && git checkout -b "${BRANCH}" "origin/${SOURCE_BRANCH}"
 cd -
 push_branch "${BRANCH}" "Distribution"
 
 # branch development collection
-cd Packages/Neos && git checkout -b "${BRANCH}" origin/master
+cd Packages/Neos && git checkout -b "${BRANCH}" "origin/${SOURCE_BRANCH}"
 cd -
 push_branch "${BRANCH}" "Packages/Neos"
 
 # branch demo site
-cd Packages/Sites/Neos.Demo && git checkout -b "${BRANCH}" origin/master ; cd -
+cd Packages/Sites/Neos.Demo && git checkout -b "${BRANCH}" "origin/${SOURCE_BRANCH}" ; cd -
 push_branch "${BRANCH}" "Packages/Sites/Neos.Demo"
 
 "$(dirname "${BASH_SOURCE[0]}")/set-dependencies.sh" "${BRANCH}.x-dev" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}" || exit 1
@@ -63,7 +68,7 @@ rm -rf Distribution
 git clone --no-checkout git@github.com:neos/neos-development-distribution.git Distribution
 
 # branch distribution
-cd Distribution && git checkout -b "${BRANCH}" origin/master
+cd Distribution && git checkout -b "${BRANCH}" "origin/${SOURCE_BRANCH}"
 cd -
 push_branch "${BRANCH}" "Distribution"
 
