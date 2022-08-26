@@ -12,8 +12,15 @@ set -e
 # GITHUB_TOKEN     to authenticate github calls and avoid API limits
 #
 
-if [ -z "$VERSION" ]; then echo "\$VERSION not set"; exit 1; fi
-if [ -z "$PREVIOUS_VERSION" ]; then echo "\$PREVIOUS_VERSION not set"; exit 1; fi
-export TARGET="Neos.Neos/Documentation/Appendixes/ReleaseNotes/$(echo ${VERSION} | tr -d .).rst"
+if [ -z "$VERSION" ]; then
+  echo "\$VERSION not set"
+  exit 1
+fi
+if [ -z "$PREVIOUS_VERSION" ]; then
+  echo "\$PREVIOUS_VERSION not set"
+  exit 1
+fi
+TARGET="Neos.Neos/Documentation/Appendixes/ReleaseNotes/$(echo "${VERSION}" | tr -d .).rst"
+export TARGET
 
-php Build/BuildEssentials/build-tools.php neos:create-releasenotes neos $PREVIOUS_VERSION $VERSION $TARGET --filter=FEATURE --githubToken=$GITHUB_TOKEN --buildUrl=$BUILD_URL
+php Build/BuildEssentials/build-tools.php neos:create-releasenotes neos "$PREVIOUS_VERSION" "$VERSION" "$TARGET" --filter=FEATURE --githubToken="$GITHUB_TOKEN" --buildUrl="$BUILD_URL"
