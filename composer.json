@@ -33,12 +33,11 @@
     "neos/form": "@dev",
     "neos/setup": "@dev",
     "flowpack/neos-frontendlogin": "@dev",
-    "neos/buildessentials": "@dev",
+    "neos/buildessentials": "7.1.x-dev",
     "mikey179/vfsstream": "^1.6",
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
-    "neos/behat": "@dev",
-    "vimeo/psalm": "~4.1.0",
+    "neos/behat": "7.1.x-dev",
     "neos/neos": "7.1.x-dev",
     "neos/site-kickstarter": "7.1.x-dev",
     "neos/content-repository": "7.1.x-dev",
@@ -46,6 +45,7 @@
     "neos/media": "7.1.x-dev",
     "neos/media-browser": "7.1.x-dev",
     "neos/diff": "7.1.x-dev",
+    "vimeo/psalm": "~4.1.0",
     "neos/doctools": "^3.3"
   },
   "repositories": {
