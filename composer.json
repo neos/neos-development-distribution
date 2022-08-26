@@ -33,7 +33,7 @@
     "neos/form": "@dev",
     "neos/setup": "@dev",
     "flowpack/neos-frontendlogin": "^4.1",
-    "neos/buildessentials": "@dev",
+    "neos/buildessentials": "7.0.x-dev",
     "mikey179/vfsstream": "^1.6",
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
