@@ -12,23 +12,38 @@
 # BUILD_URL        used in commit message
 #
 
-if [ -z "$VERSION" ]; then echo "\$VERSION not set"; exit 1; fi
-if [ -z "$PREVIOUS_VERSION" ]; then echo "\$PREVIOUS_VERSION not set"; exit 1; fi
-if [ -z "$BRANCH" ]; then echo "\$BRANCH not set"; exit 1; fi
-if [ -z "$FLOW_BRANCH" ]; then echo "\$FLOW_BRANCH not set"; exit 1; fi
-if [ -z "$BUILD_URL" ]; then echo "\$BUILD_URL not set"; exit 1; fi
+if [ -z "$VERSION" ]; then
+  echo "\$VERSION not set"
+  exit 1
+fi
+if [ -z "$PREVIOUS_VERSION" ]; then
+  echo "\$PREVIOUS_VERSION not set"
+  exit 1
+fi
+if [ -z "$BRANCH" ]; then
+  echo "\$BRANCH not set"
+  exit 1
+fi
+if [ -z "$FLOW_BRANCH" ]; then
+  echo "\$FLOW_BRANCH not set"
+  exit 1
+fi
+if [ -z "$BUILD_URL" ]; then
+  echo "\$BUILD_URL not set"
+  exit 1
+fi
 
 rm -rf Distribution
 git clone -b "${BRANCH}" git@github.com:neos/neos-base-distribution.git Distribution
 
 if [ ! -e "composer.phar" ]; then
-    ln -s /usr/local/bin/composer.phar composer.phar
+  ln -s /usr/local/bin/composer.phar composer.phar
 fi
 
 composer.phar -vn clear-cache
 composer.phar -vn update
 Build/create-changelog.sh
-if [[ "$VERSION" == *.0 ]]
+if [[ "$VERSION" == *.0 ]]; then
   Build/create-releasenotes.sh
 fi
 Build/tag-release.sh "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}"
