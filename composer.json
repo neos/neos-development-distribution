@@ -45,8 +45,7 @@
     "neos/media": "5.3.x-dev",
     "neos/media-browser": "5.3.x-dev",
     "neos/diff": "5.3.x-dev",
-    "vimeo/psalm": "~4.1.0",
-    "neos/doctools": "^3.3"
+    "vimeo/psalm": "~4.1.0"
   },
   "repositories": {
     "distributionPackages": {
