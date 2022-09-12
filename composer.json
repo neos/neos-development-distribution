@@ -41,7 +41,6 @@
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
     "vimeo/psalm": "~4.9.3",
-    "neos/doctools": "^3.3",
     "neos/neos": "7.2.x-dev",
     "neos/site-kickstarter": "7.2.x-dev",
     "neos/content-repository": "7.2.x-dev",
