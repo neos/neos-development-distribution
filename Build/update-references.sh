@@ -26,7 +26,9 @@ done
 
 # commit and push results to Neos dev collection
 echo 'Commit and push to Neos'
-git commit -am 'TASK: Update references [skip ci]'
+git add Neos.Neos/Documentation
+git add Neos.Media/Documentation
+git commit -m 'TASK: Update references [skip ci]'
 git config push.default simple
 git push origin ${BRANCH}
 cd -
