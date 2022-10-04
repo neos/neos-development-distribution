@@ -23,8 +23,8 @@
     }
   },
   "require": {
-    "neos/neos-development-collection": "dev-master",
-    "neos/flow-development-collection": "dev-master",
+    "neos/neos-development-collection": "8.2.x-dev",
+    "neos/flow-development-collection": "8.2.x-dev",
     "neos/demo": "@dev",
     "neos/neos-ui": "@dev",
     "neos/neos-ui-compiled": "@dev",
