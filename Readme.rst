@@ -11,6 +11,14 @@ Learn more about the Neos content application platform on http://www.neos.io/.
 Quick Start
 ===========
 
+Docker Setup
+------------
+
+First time will take some time because we load all "neos/*" dependencies as Git repositories.
+
+.. code:: bash
+  docker compose up -d && docker compose logs -f
+
 local checkout
 --------------
 
