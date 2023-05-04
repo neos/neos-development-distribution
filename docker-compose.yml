@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  neos:
+    build:
+       context: .
+       dockerfile: ./docker/Dockerfile
+    environment:
+      FLOW_CONTEXT: 'Development/Docker'
+      COMPOSER_CACHE_DIR: '/composer_cache'
+      # DB connection
+      DB_NEOS_HOST: 'db'
+      DB_NEOS_PORT: 3306
+      DB_NEOS_PASSWORD: 'neos'
+      DB_NEOS_USER: 'neos'
+      DB_NEOS_DATABASE: 'neos'
+      # Neos
+      ADMIN_USERNAME: 'admin'
+      ADMIN_PASSWORD: 'password'
+    volumes:
+      - ./composer.json:/app/composer.json:cached
+      # Explicitly set up Composer cache for faster fetching of packages
+      - ./tmp/composer_cache:/composer_cache:cached
+      # Code
+      - ./DistributionPackages:/app/DistributionPackages:cached
+      - ./Packages:/app/Packages:cached
+      - ./Configuration:/app/Configuration:cached
+    ports:
+      - '8081:8081'
+    networks:
+      - neosdevelopment
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.11
+    environment:
+      MYSQL_ROOT_PASSWORD: neos
+      MYSQL_DATABASE: neos
+      MYSQL_USER: neos
+      MYSQL_PASSWORD: neos
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - '13306:3306'
+    networks:
+      - neosdevelopment
+volumes:
+  db:
+
+networks:
+  neosdevelopment:
+    name: neosdevelopment
