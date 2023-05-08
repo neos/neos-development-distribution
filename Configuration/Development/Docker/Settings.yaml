@@ -16,19 +16,12 @@ Neos:
       backendOptions:
         charset: 'utf8mb4'
         host: '%env:DB_NEOS_HOST%'
-        dbname: '%env:DB_NEOS_DATABASE%'       # adjust to your database name
-        user: '%env:DB_NEOS_USER%'             # adjust to your database user
-        password: '%env:DB_NEOS_PASSWORD%'         # adjust to your database password
-
-       # if you want to log executed SQL queries, enable the next 2 lines
-#      doctrine:
-#        sqlLogger: 'Neos\Flow\Persistence\Doctrine\Logging\SqlLogger'
-
-    # If you are running Flow within a Docker environment, you probably need to allow all proxies,
-    # because the container acts as such and the IP is variable.
-#    http:
-#      trustedProxies:
-#        proxies: '*'
+        port: '%env:DB_NEOS_PORT%'
+        dbname: '%env:DB_NEOS_DATABASE%'
+        user: '%env:DB_NEOS_USER%'
+        password: '%env:DB_NEOS_PASSWORD%'
+    cache:
+      applicationIdentifier: 'app'
 
   Imagine:
     driver: Gmagick
