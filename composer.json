@@ -24,7 +24,7 @@
   },
   "require": {
     "neos/neos-development-collection": "9.0.x-dev",
-    "neos/flow-development-collection": "9.0.x-dev",
+    "neos/flow-development-collection": "9.0.x-dev#ff724597bdf1832625c02aba317577324251a7a7",
     "neos/eventstore": "dev-main",
     "neos/eventstore-doctrineadapter": "dev-main",
     "neos/demo": "@dev",
