@@ -47,7 +47,7 @@
     "squizlabs/php_codesniffer": "^3.6",
     "neos/redirecthandler": "dev-flow-9-compatibility as dev-master",
     "neos/redirecthandler-databasestorage": "dev-main",
-    "redirecthandler-neosadapter": "dev-90/feature-upgrade-to-neos-9",
+    "neos/redirecthandler-neosadapter": "dev-90/feature-upgrade-to-neos-9",
     "dg/bypass-finals": "^1.2"
   },
   "repositories": {
