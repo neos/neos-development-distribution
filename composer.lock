@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e4a85959ebb86842d93fc6cd92bbaf0",
+    "content-hash": "78ba9df8730666a5e56ff69a61811c50",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1130,16 +1130,16 @@
         },
         {
             "name": "dg/bypass-finals",
-            "version": "v1.4.1",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dg/bypass-finals.git",
-                "reference": "4c424c3ed359220fce044f35cdf9f48b0089b2ca"
+                "reference": "7df37b7342d7d25ab906e53eb4e92d83542f46c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/bypass-finals/zipball/4c424c3ed359220fce044f35cdf9f48b0089b2ca",
-                "reference": "4c424c3ed359220fce044f35cdf9f48b0089b2ca",
+                "url": "https://api.github.com/repos/dg/bypass-finals/zipball/7df37b7342d7d25ab906e53eb4e92d83542f46c1",
+                "reference": "7df37b7342d7d25ab906e53eb4e92d83542f46c1",
                 "shasum": ""
             },
             "require": {
@@ -1177,9 +1177,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dg/bypass-finals/issues",
-                "source": "https://github.com/dg/bypass-finals/tree/v1.4.1"
+                "source": "https://github.com/dg/bypass-finals/tree/v1.5.0"
             },
-            "time": "2022-09-13T17:27:26+00:00"
+            "time": "2023-08-23T11:20:33+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -4225,12 +4225,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-development-collection.git",
-                "reference": "a301d859e065533aca7bd7ed4f5c02f763c0bf82"
+                "reference": "047806bc42dd57dc1da4a49ee0c7fb88aee90042"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-development-collection/zipball/a301d859e065533aca7bd7ed4f5c02f763c0bf82",
-                "reference": "a301d859e065533aca7bd7ed4f5c02f763c0bf82",
+                "url": "https://api.github.com/repos/neos/neos-development-collection/zipball/047806bc42dd57dc1da4a49ee0c7fb88aee90042",
+                "reference": "047806bc42dd57dc1da4a49ee0c7fb88aee90042",
                 "shasum": ""
             },
             "require": {
@@ -4435,7 +4435,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-08-11T14:28:52+00:00"
+            "time": "2023-08-24T18:51:26+00:00"
         },
         {
             "name": "neos/neos-setup",
@@ -5552,16 +5552,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.29",
+            "version": "1.10.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "ee5d8f2d3977fb09e55603eee6fb53bdd76ee9c1"
+                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ee5d8f2d3977fb09e55603eee6fb53bdd76ee9c1",
-                "reference": "ee5d8f2d3977fb09e55603eee6fb53bdd76ee9c1",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
+                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
                 "shasum": ""
             },
             "require": {
@@ -5610,7 +5610,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-14T13:24:11+00:00"
+            "time": "2023-08-24T21:54:50+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -10212,16 +10212,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "5.14.1",
+            "version": "5.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "b9d355e0829c397b9b3b47d0c0ed042a8a70284d"
+                "reference": "5c774aca4746caf3d239d9c8cadb9f882ca29352"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/b9d355e0829c397b9b3b47d0c0ed042a8a70284d",
-                "reference": "b9d355e0829c397b9b3b47d0c0ed042a8a70284d",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/5c774aca4746caf3d239d9c8cadb9f882ca29352",
+                "reference": "5c774aca4746caf3d239d9c8cadb9f882ca29352",
                 "shasum": ""
             },
             "require": {
@@ -10248,6 +10248,9 @@
                 "spatie/array-to-xml": "^2.17.0 || ^3.0",
                 "symfony/console": "^4.1.6 || ^5.0 || ^6.0",
                 "symfony/filesystem": "^5.4 || ^6.0"
+            },
+            "conflict": {
+                "nikic/php-parser": "4.17.0"
             },
             "provide": {
                 "psalm/psalm": "self.version"
@@ -10312,9 +10315,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/5.14.1"
+                "source": "https://github.com/vimeo/psalm/tree/5.15.0"
             },
-            "time": "2023-08-01T05:16:55+00:00"
+            "time": "2023-08-20T23:07:30+00:00"
         },
         {
             "name": "webmozart/assert",
