@@ -26,6 +26,7 @@ php "$(dirname "${BASH_SOURCE[0]}")/../composer.phar" require --no-interaction -
 # render references
 ./flow cache:warmup
 ./flow reference:rendercollection Neos
+./flow commandreference:rendercollection Neos
 
 cd Packages/Neos || exit 1
 
