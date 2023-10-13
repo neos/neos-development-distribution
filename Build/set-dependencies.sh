@@ -121,9 +121,8 @@ php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.SiteKickstarter require --no-update "neos/kickstarter:~${FLOW_BRANCH}.0"
 
 cd Packages/Neos || exit 1
-# replace flow-development-collection dev-master dependency with dev-branch in .composer.json
-S_FLOW_DEV_BRANCH=$(echo "${FLOW_BRANCH}.x-dev" | sed -e 's/[]$.*[\^\/]/\\&/g')
-sed -i -e "s/flow-development-collection\": \"dev-master\"/flow-development-collection\": \"${S_FLOW_DEV_BRANCH}\"/" .composer.json
+# replace flow-development-collection dependency with new dev-branch in .composer.json
+sed -i -e "s/flow-development-collection\": \"[0-9\.]*\.x-dev\"/flow-development-collection\": \"${FLOW_BRANCH}\.x-dev\"/" .composer.json
 git add .composer.json
 php ../../Build/BuildEssentials/ComposerManifestMerger.php
 cd - || exit 1
