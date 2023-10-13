@@ -3,7 +3,7 @@
 /Build/BuildEssentials
 /Build/Reports
 /Build/Resources
-/Configuration/
+/Configuration/*
 /Data/
 /Packages/
 /Web/
@@ -19,3 +19,11 @@
 Build/Resources/Java/selenium-server-standalone*
 /"
 Upgrading.rst
+
+# Dev Docker Settings
+!/Configuration/Development
+/Configuration/Development/*
+!/Configuration/Development/Docker
+
+# composer cache
+/tmp/
