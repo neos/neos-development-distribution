@@ -105,6 +105,10 @@ fi
 
 commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Distribution"
 
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/flow:~${FLOW_BRANCH}.0"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fluid-adaptor:~${FLOW_BRANCH}.0"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.SiteKickstarter require --no-update "neos/kickstarter:~${FLOW_BRANCH}.0"
+
 cd Packages/Neos
 # replace flow-development-collection dev-master dependency with dev-branch in .composer.json
 S_FLOW_DEV_BRANCH=$(echo "${FLOW_BRANCH}.x-dev" | sed -e 's/[]$.*[\^\/]/\\&/g')
