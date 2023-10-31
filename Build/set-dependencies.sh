@@ -105,14 +105,6 @@ fi
 
 commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Distribution"
 
-echo "Setting packages dependencies"
-
-php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/content-repository:~${BRANCH}.0"
-php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fusion:~${BRANCH}.0"
-php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/media:~${BRANCH}.0"
-php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/media-browser:~${BRANCH}.0"
-php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/diff:~${BRANCH}.0"
-
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/flow:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fluid-adaptor:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.SiteKickstarter require --no-update "neos/kickstarter:~${FLOW_BRANCH}.0"
