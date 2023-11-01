@@ -5,25 +5,27 @@
 /Build/Resources
 /Configuration/*
 /Data/
+/DistributionPackages/*
+!/DistributionPackages/.gitkeep
 /Packages/
 /Web/
 /bin/
 /Readme.txt
 /Upgrading.txt
+/Upgrading.rst
 /flow
 /flow.bat
 
-# ignore the downloaded selenium server, config and the selenium
-# temporary directory (which starts with a quote, do not ask why...)
-/Tests/Selenium/settings.xml
-Build/Resources/Java/selenium-server-standalone*
-/"
-Upgrading.rst
+# ingore for dev distribution
+/composer.lock
+
+# is put in place by composer install, so ignore it
+.editorconfig
 
 # Dev Docker Settings
 !/Configuration/Development
 /Configuration/Development/*
 !/Configuration/Development/Docker
 
-# composer cache
+# cache
 /tmp/
