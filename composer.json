@@ -42,8 +42,7 @@
     "mikey179/vfsstream": "^1.6",
     "behat/behat": "^3.13",
     "phpunit/phpunit": "^9.6",
-    "vimeo/psalm": "^5.0",
-    "phpstan/phpstan": "^1.5",
+    "phpstan/phpstan": "^1.10.0",
     "squizlabs/php_codesniffer": "^3.6",
     "dg/bypass-finals": "^1.2"
   },
