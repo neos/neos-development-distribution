@@ -66,13 +66,11 @@ echo "Setting distribution dependencies"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/site-kickstarter:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/cli-setup:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${VERSION}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:~${VERSION}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:~${VERSION}"
 
 # Require exact versions of sub dependency packages, allowing unstable
 if [[ ${STABILITY_FLAG} ]]; then
-  php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/content-repository:${VERSION}"
   php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/fusion:${VERSION}"
   php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/media:${VERSION}"
   php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/media-browser:${VERSION}"
@@ -80,7 +78,6 @@ if [[ ${STABILITY_FLAG} ]]; then
 # Remove dependencies not needed if releasing a stable version
 else
   # Remove requirements for development version of sub dependency packages
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/content-repository"
   php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/fusion"
   php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/media"
   php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/media-browser"
