@@ -22,11 +22,13 @@
       "neos/composer-plugin": true
     }
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
     "neos/neos-development-collection": "9.0.x-dev",
     "neos/flow-development-collection": "9.0.x-dev",
-    "neos/eventstore": "dev-main",
-    "neos/eventstore-doctrineadapter": "dev-main",
+    "neos/eventstore": "~1.0.0",
+    "neos/eventstore-doctrineadapter": "~1.0.0",
     "neos/demo": "@dev",
     "neos/neos-ui": "9.0.x-dev",
     "neos/neos-ui-compiled": "@dev",
