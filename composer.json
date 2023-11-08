@@ -60,6 +60,7 @@
     "neos/behat": "@dev",
     "neos/buildessentials": "@dev",
     "mikey179/vfsstream": "^1.6",
+    "league/flysystem-memory": "^3",
     "behat/behat": "^3.13",
     "phpunit/phpunit": "^9.6",
     "phpstan/phpstan": "^1.10.0",
