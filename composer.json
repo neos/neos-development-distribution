@@ -27,26 +27,16 @@
   "require": {
     "neos/neos-development-collection": "9.0.x-dev",
     "neos/flow-development-collection": "9.0.x-dev",
-    "neos/eventstore": "~1.0.0",
-    "neos/eventstore-doctrineadapter": "~1.0.0",
     "neos/demo": "@dev",
     "neos/neos-ui": "9.0.x-dev",
     "neos/neos-ui-compiled": "@dev",
-    "neos/fusion-afx": "@dev",
     "neos/fusion-form": "@dev",
     "neos/party": "@dev",
     "neos/seo": "@dev",
     "neos/imagine": "@dev",
     "neos/twitter-bootstrap": "@dev",
     "neos/form": "@dev",
-    "neos/setup": "@dev",
-    "flowpack/neos-frontendlogin": "@dev",
-    "mikey179/vfsstream": "^1.6",
-    "behat/behat": "^3.13",
-    "phpunit/phpunit": "^9.6",
-    "phpstan/phpstan": "^1.10.0",
-    "squizlabs/php_codesniffer": "^3.6",
-    "dg/bypass-finals": "^1.2"
+    "neos/neos-setup": "^4.0.x-dev"
   },
   "repositories": {
     "distributionPackages": {
@@ -64,13 +54,15 @@
     "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
     "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
     "test-unit": "phpunit -c Build/BuildEssentials/PhpUnit/UnitTests.xml",
-    "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml",
-    "test-static-flow": "psalm --config=Packages/Framework/psalm.xml --show-info=false",
-    "psalm-baseline-update-flow": "psalm --config=Packages/Framework/psalm.xml --set-baseline=Packages/Framework/psalm-baseline.xml"
+    "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml"
   },
   "require-dev": {
     "neos/behat": "@dev",
     "neos/buildessentials": "@dev",
-    "dg/bypass-finals": "^1.2"
+    "mikey179/vfsstream": "^1.6",
+    "behat/behat": "^3.13",
+    "phpunit/phpunit": "^9.6",
+    "phpstan/phpstan": "^1.10.0",
+    "squizlabs/php_codesniffer": "^3.6"
   }
 }
