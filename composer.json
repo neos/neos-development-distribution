@@ -57,7 +57,7 @@
     "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml"
   },
   "require-dev": {
-    "neos/behat": "dev-9.0",
+    "neos/behat": "9.0.x-dev",
     "neos/buildessentials": "@dev",
     "mikey179/vfsstream": "^1.6",
     "league/flysystem-memory": "^3",
