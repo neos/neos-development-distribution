@@ -43,7 +43,6 @@
     "vimeo/psalm": "~4.30.0",
     "neos/neos": "8.1.x-dev",
     "neos/site-kickstarter": "8.1.x-dev",
-    "neos/cli-setup": "8.1.x-dev",
     "neos/content-repository": "8.1.x-dev",
     "neos/fusion": "8.1.x-dev",
     "neos/media": "8.1.x-dev",
