@@ -52,7 +52,7 @@
     "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
   },
   "scripts": {
-    "post-create-project-cmd": "./flow setup:index",
+    "post-create-project-cmd": "./flow setup",
     "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
     "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
     "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
