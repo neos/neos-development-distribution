@@ -36,7 +36,8 @@
     "neos/imagine": "@dev",
     "neos/twitter-bootstrap": "@dev",
     "neos/form": "@dev",
-    "neos/neos-setup": "^4.0.x-dev"
+    "neos/neos-setup": "^4.0.x-dev",
+    "neos/setup": "@dev"
   },
   "repositories": {
     "distributionPackages": {
@@ -48,7 +49,7 @@
     "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
   },
   "scripts": {
-    "post-create-project-cmd": "./flow welcome",
+    "post-create-project-cmd": "./flow setup",
     "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
     "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
     "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
@@ -61,7 +62,6 @@
     "neos/buildessentials": "@dev",
     "mikey179/vfsstream": "^1.6",
     "league/flysystem-memory": "^3",
-    "behat/behat": "^3.13",
     "phpunit/phpunit": "^9.6",
     "phpstan/phpstan": "^1.10.0",
     "squizlabs/php_codesniffer": "^3.6"
