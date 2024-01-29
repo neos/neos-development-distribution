@@ -1,0 +1,47 @@
+Flow_Mvc_Routing_Route:
+  backend: 'Neos\Cache\Backend\RedisBackend'
+  backendOptions:
+    hostname: '%env:REDIS_HOST%'
+    port: '%env:REDIS_PORT%'
+    database: 2
+    defaultLifetime: 0
+
+Flow_Mvc_Routing_Resolve:
+  backend: 'Neos\Cache\Backend\RedisBackend'
+  backendOptions:
+    hostname: '%env:REDIS_HOST%'
+    port: '%env:REDIS_PORT%'
+    database: 2
+    defaultLifetime: 0
+
+Neos_Fusion_Content:
+  backend: 'Neos\Cache\Backend\RedisBackend'
+  backendOptions:
+    hostname: '%env:REDIS_HOST%'
+    port: '%env:REDIS_PORT%'
+    database: 2
+    defaultLifetime: 0
+
+Flow_Session_MetaData:
+  backend: 'Neos\Cache\Backend\RedisBackend'
+  backendOptions:
+    hostname: '%env:REDIS_HOST%'
+    port: '%env:REDIS_PORT%'
+    database: 2
+    defaultLifetime: 0
+
+Flow_Session_Storage:
+  backend: 'Neos\Cache\Backend\RedisBackend'
+  backendOptions:
+    hostname: '%env:REDIS_HOST%'
+    port: '%env:REDIS_PORT%'
+    database: 2
+    defaultLifetime: 0
+
+Neos_Media_ImageSize:
+  backend: 'Neos\Cache\Backend\RedisBackend'
+  backendOptions:
+    hostname: '%env:REDIS_HOST%'
+    port: '%env:REDIS_PORT%'
+    database: 2
+    defaultLifetime: 0
