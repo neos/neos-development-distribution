@@ -23,10 +23,10 @@
     }
   },
   "require": {
-    "neos/neos-development-collection": "8.3.x-dev",
-    "neos/flow-development-collection": "8.3.x-dev",
+    "neos/neos-development-collection": "8.4.x-dev",
+    "neos/flow-development-collection": "8.4.x-dev",
     "neos/neos-setup": "3.x-dev",
-    "neos/demo": "8.3.x-dev",
+    "neos/demo": "8.4.x-dev",
     "neos/neos-ui": "@dev",
     "neos/neos-ui-compiled": "@dev",
     "neos/fusion-afx": "@dev",
@@ -42,13 +42,13 @@
     "phpunit/phpunit": "^9.0",
     "symfony/css-selector": "^2.0",
     "phpstan/phpstan": "^1.10",
-    "neos/neos": "8.3.x-dev",
-    "neos/site-kickstarter": "8.3.x-dev",
-    "neos/content-repository": "8.3.x-dev",
-    "neos/fusion": "8.3.x-dev",
-    "neos/media": "8.3.x-dev",
-    "neos/media-browser": "8.3.x-dev",
-    "neos/diff": "8.3.x-dev"
+    "neos/neos": "8.4.x-dev",
+    "neos/site-kickstarter": "8.4.x-dev",
+    "neos/content-repository": "8.4.x-dev",
+    "neos/fusion": "8.4.x-dev",
+    "neos/media": "8.4.x-dev",
+    "neos/media-browser": "8.4.x-dev",
+    "neos/diff": "8.4.x-dev"
   },
   "repositories": {
     "distributionPackages": {
@@ -69,7 +69,7 @@
     "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml"
   },
   "require-dev": {
-    "neos/behat": "8.3.x-dev",
-    "neos/buildessentials": "8.3.x-dev"
+    "neos/behat": "8.4.x-dev",
+    "neos/buildessentials": "8.4.x-dev"
   }
 }
