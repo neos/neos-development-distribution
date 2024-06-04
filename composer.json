@@ -69,7 +69,7 @@
     "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml"
   },
   "require-dev": {
-    "neos/behat": "8.4.x-dev",
-    "neos/buildessentials": "8.4.x-dev"
+    "neos/behat": "8.3.x-dev",
+    "neos/buildessentials": "8.3.x-dev"
   }
 }
