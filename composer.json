@@ -24,7 +24,7 @@
   },
   "require": {
     "neos/neos-development-collection": "8.4.x-dev",
-    "neos/flow-development-collection": "8.4.x-dev",
+    "neos/flow-development-collection": "8.3.x-dev",
     "neos/neos-setup": "3.x-dev",
     "neos/demo": "8.4.x-dev",
     "neos/neos-ui": "@dev",
