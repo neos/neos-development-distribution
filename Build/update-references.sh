@@ -23,6 +23,15 @@ git reset --hard "origin/${BRANCH}"
 php "$(dirname "${BASH_SOURCE[0]}")/../composer.phar" update --no-interaction --no-progress
 php "$(dirname "${BASH_SOURCE[0]}")/../composer.phar" require --no-interaction --no-progress neos/doctools
 
+# configure reflection for CR command reference rendering
+cat << EOT > Configuration/Settings.DocTools.yaml
+Neos:
+  Flow:
+   object:
+     includeClasses:
+       'neos.contentrepositorycore': [ 'Neos\\\\ContentRepository\\\\Core\\\\Feature\\\\.*\\\\Command\\\\.*' ]
+EOT
+
 # render references
 ./flow cache:warmup
 ./flow reference:rendercollection Neos
