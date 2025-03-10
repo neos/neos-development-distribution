@@ -31,11 +31,22 @@ if [ -z "$BUILD_URL" ]; then
 fi
 
 if [ ! -e "composer.phar" ]; then
-  ln -s /usr/local/bin/composer.phar composer.phar
+  EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
+  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+  if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
+  then
+      echo 'ERROR: Invalid installer checksum'
+      rm composer-setup.php
+      exit 1
+  fi
+
+  php composer-setup.php
+  rm composer-setup.php
 fi
 
-php ./composer.phar -vn clear-cache
-php ./composer.phar -vn update
+php ./composer.phar -v update
 
 source "$(dirname "${BASH_SOURCE[0]}")/BuildEssentials/ReleaseHelpers.sh"
 
