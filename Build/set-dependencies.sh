@@ -67,7 +67,7 @@ php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/contentgraph-doctrinedbaladapter:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/site-kickstarter:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:~${VERSION}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${VERSION}"
 
 # Require exact versions of sub dependency packages, allowing unstable
 if [[ ${STABILITY_FLAG} ]]; then
