@@ -1,0 +1,25 @@
+#!/bin/bash
+
+## Description: Initialize app
+## Usage: app-init
+## Example: "ddev app-init"
+
+composer install
+
+./flow database:setcharset
+./flow doctrine:migrate
+
+./flow cr:setup --content-repository default
+
+./flow user:create --roles Administrator $ADMIN_USERNAME $ADMIN_PASSWORD LocalDev Admin || true
+
+# only run site import when nothing was imported before
+importedSites=`./flow site:list`
+if [ "$importedSites" = "No sites available" ]; then
+    echo "Importing content from Demo"
+    ./flow site:importall --package-key="Neos.Demo"
+fi
+
+./flow resource:publish
+./flow flow:cache:flush
+./flow cache:warmup
