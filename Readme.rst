@@ -49,3 +49,5 @@ how to push changes
 6. Create Pull Request on github.com
 
 For details see https://discuss.neos.io/t/development-workflow-for-github
+
+Run tests via IntelliJ, see: ./doc/tests-in-intellij.md
