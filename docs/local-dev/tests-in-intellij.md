@@ -7,6 +7,7 @@
 - IntelliJ + Plugins:
     - Behat Support: https://plugins.jetbrains.com/plugin/7512-behat-support
     - Gherkin: https://plugins.jetbrains.com/plugin/9164-gherkin
+    - PHP Docker: https://plugins.jetbrains.com/plugin/8595-php-docker
 - docker compose
 - application must be up and running
 
