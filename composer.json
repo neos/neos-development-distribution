@@ -29,7 +29,6 @@
     "neos/flow-development-collection": "9.0.x-dev",
     "neos/demo": "9.0.x-dev",
     "neos/neos-ui": "9.0.x-dev",
-    "neos/neos-ui-compiled": "@dev",
     "neos/fusion-form": "@dev",
     "neos/party": "@dev",
     "neos/seo": "@dev",
