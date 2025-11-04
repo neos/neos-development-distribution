@@ -29,12 +29,10 @@
     "neos/flow-development-collection": "9.1.x-dev",
     "neos/demo": "9.1.x-dev",
     "neos/neos-ui": "9.0.x-dev",
-    "neos/neos-ui-compiled": "@dev",
     "neos/fusion-form": "@dev",
     "neos/party": "@dev",
     "neos/seo": "@dev",
     "neos/imagine": "@dev",
-    "neos/twitter-bootstrap": "@dev",
     "neos/form": "@dev",
     "neos/neos-setup": "^4.0.x-dev",
     "neos/setup": "@dev",
@@ -68,6 +66,7 @@
     "phpunit/phpunit": "^9.6.11",
     "phpstan/phpstan": "^1.10.0",
     "squizlabs/php_codesniffer": "^3.6",
+    "brianium/paratest": "^6.11",
     "neos/site-kickstarter": "9.1.x-dev"
   }
 }
