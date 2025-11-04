@@ -25,7 +25,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "neos/neos-development-collection": "9.0.x-dev",
+    "neos/neos": "@dev",
     "neos/flow-development-collection": "9.0.x-dev",
     "neos/demo": "9.0.x-dev",
     "neos/neos-ui": "9.0.x-dev",
@@ -41,6 +41,10 @@
     "distributionPackages": {
       "type": "path",
       "url": "./DistributionPackages/*"
+    },
+    "neosPackages": {
+      "type": "path",
+      "url": "./NeosCollection/*"
     }
   },
   "suggest": {
@@ -54,7 +58,8 @@
     "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
     "test-unit": "phpunit -c Build/BuildEssentials/PhpUnit/UnitTests.xml",
     "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml",
-    "benchmark": "tools/phpbench run --report=aggregate"
+    "benchmark": "tools/phpbench run --report=aggregate",
+    "post-root-package-install": ". ./Build/clone-neos.sh"
   },
   "require-dev": {
     "neos/behat": "9.0.x-dev",
