@@ -27,7 +27,7 @@
   "require": {
     "neos/neos": "@dev",
     "neos/contentgraph-doctrinedbaladapter": "@dev",
-    "neos/flow-development-collection": "9.0.x-dev",
+    "neos/flow": "@dev",
     "neos/demo": "9.0.x-dev",
     "neos/neos-ui": "9.0.x-dev",
     "neos/fusion-form": "@dev",
@@ -43,9 +43,13 @@
       "type": "path",
       "url": "./DistributionPackages/*"
     },
-    "neosPackages": {
+    "neosCollectionPackages": {
       "type": "path",
       "url": "./NeosCollection/*"
+    },
+    "flowCollectionPackages": {
+      "type": "path",
+      "url": "./FlowCollection/*"
     }
   },
   "suggest": {
