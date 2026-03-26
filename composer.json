@@ -25,10 +25,10 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "neos/neos-development-collection": "9.1.x-dev",
-    "neos/flow-development-collection": "9.1.x-dev",
-    "neos/demo": "9.1.x-dev",
-    "neos/neos-ui": "9.0.x-dev",
+    "neos/neos-development-collection": "9.2.x-dev",
+    "neos/flow-development-collection": "9.2.x-dev",
+    "neos/demo": "9.2.x-dev",
+    "neos/neos-ui": "9.2.x-dev",
     "neos/fusion-form": "@dev",
     "neos/party": "@dev",
     "neos/seo": "@dev",
@@ -36,8 +36,8 @@
     "neos/form": "@dev",
     "neos/neos-setup": "^4.0.x-dev",
     "neos/setup": "@dev",
-    "neos/neos": "9.1.x-dev",
-    "neos/contentgraph-doctrinedbaladapter": "9.1.x-dev"
+    "neos/neos": "9.2.x-dev",
+    "neos/contentgraph-doctrinedbaladapter": "9.2.x-dev"
   },
   "repositories": {
     "distributionPackages": {
@@ -59,14 +59,14 @@
     "benchmark": "tools/phpbench run --report=aggregate"
   },
   "require-dev": {
-    "neos/behat": "9.0.x-dev",
-    "neos/buildessentials": "9.1.x-dev",
+    "neos/behat": "9.2.x-dev",
+    "neos/buildessentials": "9.2.x-dev",
     "mikey179/vfsstream": "^1.6",
     "league/flysystem-memory": "^3",
     "phpunit/phpunit": "^9.6.11",
     "phpstan/phpstan": "^1.10.0",
     "squizlabs/php_codesniffer": "^3.6",
     "brianium/paratest": "^6.11",
-    "neos/site-kickstarter": "9.1.x-dev"
+    "neos/site-kickstarter": "9.2.x-dev"
   }
 }
