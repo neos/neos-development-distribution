@@ -15,6 +15,7 @@
     "vendor-dir": "Packages/Libraries",
     "bin-dir": "bin",
     "preferred-install": {
+      "neos/neos-ui-compiled": "dist",
       "neos/*": "source",
       "flowpack/*": "source"
     },
