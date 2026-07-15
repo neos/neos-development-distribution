@@ -69,34 +69,18 @@ php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/cont
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/site-kickstarter:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${VERSION}"
 
-# Require exact versions of sub dependency packages, allowing unstable
+# Allow main packages require their required sub dependency packages, allowing unstable
 if [[ ${STABILITY_FLAG} ]]; then
-  echo 'Detected stability flag "${STABILITY_FLAG}" therefore not changing further dependencies in distribution'
+  if [[ "$STABILITY_FLAG" =~ ^(dev|alpha|beta|RC|rc)$ ]]; then
+    COMPOSER_STABILITY_FLAG=${STABILITY_FLAG}
+  else
+    COMPOSER_STABILITY_FLAG="dev"
+  fi
+  composer config minimum-stability $COMPOSER_STABILITY_FLAG
+  composer config prefer-stable true
 else
-  # Remove requirements for development version of sub dependency packages
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/fusion"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/media"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/media-browser"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/diff"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/redirecthandler"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/party"
-
-  # Remove requirements for development version of framework sub dependency packages
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/cache"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/eel"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/error-messages"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/flow"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/fluid-adaptor"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/kickstarter"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-arrays"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-files"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-mediatypes"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-objecthandling"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-opcodecache"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-pdo"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-schema"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-unicode"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/http-factories"
+  composer config --unset prefer-stable
+  composer config --unset minimum-stability
 fi
 
 commit_manifest_update "${BRANCH}" "${BUILD_URL}" "${VERSION}" "Distribution"
