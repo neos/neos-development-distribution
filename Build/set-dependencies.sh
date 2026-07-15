@@ -67,7 +67,6 @@ php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/contentgraph-doctrinedbaladapter:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/site-kickstarter:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${VERSION}"
 
 # Allow main packages require their required sub dependency packages, allowing unstable
 if [[ ${STABILITY_FLAG} ]]; then
@@ -81,6 +80,13 @@ if [[ ${STABILITY_FLAG} ]]; then
 else
   composer config --unset prefer-stable
   composer config --unset minimum-stability
+fi
+
+# Require main dev dependencies (from flow release)
+if [[ ${STABILITY_FLAG} ]]; then
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${FLOW_BRANCH}.x-dev"
+else
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:~${FLOW_BRANCH}.0"
 fi
 
 commit_manifest_update "${BRANCH}" "${BUILD_URL}" "${VERSION}" "Distribution"
