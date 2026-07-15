@@ -67,6 +67,10 @@ php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/contentgraph-doctrinedbaladapter:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${VERSION}"
 
+# Require separately released Neos Ui in the minor range of the Neos branch to tag.
+# Uses when tagging a beta via "minimum-stability" the next available tag
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos-ui:~${BRANCH}.0"
+
 # Allow main packages require their required sub dependency packages, allowing unstable
 if [[ ${STABILITY_FLAG} ]]; then
   if [[ "$STABILITY_FLAG" =~ ^(dev|alpha|beta|RC|rc)$ ]]; then
