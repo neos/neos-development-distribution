@@ -84,15 +84,19 @@ fi
 
 # Require main dev dependencies (from flow release)
 if [[ ${STABILITY_FLAG} ]]; then
-  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${FLOW_BRANCH}.x-dev"
+  # using alias as "stable" so neos testing helper packages can declare a dependency
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${FLOW_BRANCH}.x-dev as ${FLOW_BRANCH}"
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:${FLOW_BRANCH}.x-dev as ${FLOW_BRANCH}"
 else
   php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:~${FLOW_BRANCH}.0"
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:~${FLOW_BRANCH}.0"
 fi
 
 commit_manifest_update "${BRANCH}" "${BUILD_URL}" "${VERSION}" "Distribution"
 
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/flow:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fluid-adaptor:~${FLOW_BRANCH}.0"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.ContentRepositoryRegistry.TestSuite require --no-update "neos/behat:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.SiteKickstarter require --no-update "neos/kickstarter:~${FLOW_BRANCH}.0"
 
 cd Packages/Neos || exit 1
