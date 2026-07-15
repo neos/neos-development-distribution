@@ -63,10 +63,9 @@ fi
 echo "Setting distribution dependencies"
 
 # Require exact versions of the main packages
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${VERSION}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos:${VERSION}
 php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/contentgraph-doctrinedbaladapter:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/site-kickstarter:${VERSION}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${VERSION}"
 
 # Allow main packages require their required sub dependency packages, allowing unstable
 if [[ ${STABILITY_FLAG} ]]; then
@@ -82,7 +81,9 @@ else
   composer config --unset minimum-stability
 fi
 
-# Require main dev dependencies (from flow release)
+# Require main dev dependencies
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/site-kickstarter:${VERSION}"
+# ...from flow release
 if [[ ${STABILITY_FLAG} ]]; then
   # using alias as "stable" so neos testing helper packages can declare a dependency
   php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${FLOW_BRANCH}.x-dev as ${FLOW_BRANCH}"
