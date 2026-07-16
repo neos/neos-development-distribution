@@ -52,7 +52,7 @@ if [ ! -e "composer.phar" ]; then
   rm composer-setup.php
 fi
 
-php composer.phar -v update
+php composer.phar -v update || exit 1
 Build/create-changelog.sh
 if [[ "$VERSION" == *.0 ]]; then
   Build/create-releasenotes.sh
@@ -64,5 +64,5 @@ Build/tag-release.sh "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}"
 #
 
 EXTENDED_RELEASE_NOTES="${RELEASE_NOTES}\n\nSee [changelog](http://neos.readthedocs.io/en/${BRANCH}/Appendixes/ChangeLogs/${VERSION//.}.html) for details."
-API_JSON=$(printf '{"tag_name": "%s","name": "Neos %s","body": "%s","draft": false,"prerelease": false}' "${VERSION}" "${VERSION}" "${EXTENDED_RELEASE_NOTES}")
+API_JSON=$(jq -n --arg tag_name "${VERSION}" --arg name "Neos ${VERSION}" --arg body "${EXTENDED_RELEASE_NOTES}" --argjson draft "false" --argjson prerelease "false" '$ARGS.named')
 curl -H "Authorization: token ${GITHUB_TOKEN}" --data "${API_JSON}" "https://api.github.com/repos/neos/neos-development-collection/releases"
