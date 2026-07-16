@@ -78,11 +78,11 @@ if [[ ${STABILITY_FLAG} ]]; then
   else
     COMPOSER_STABILITY_FLAG="dev"
   fi
-  composer config minimum-stability $COMPOSER_STABILITY_FLAG
-  composer config prefer-stable true
+  php "${COMPOSER_PHAR}" --working-dir=Distribution config minimum-stability $COMPOSER_STABILITY_FLAG
+  php "${COMPOSER_PHAR}" --working-dir=Distribution config prefer-stable true
 else
-  composer config --unset prefer-stable
-  composer config --unset minimum-stability
+  php "${COMPOSER_PHAR}" --working-dir=Distribution config --unset prefer-stable
+  php "${COMPOSER_PHAR}" --working-dir=Distribution config --unset minimum-stability
 fi
 
 # Require main dev dependencies
