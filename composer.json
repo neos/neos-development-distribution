@@ -29,7 +29,7 @@
     "neos/neos-development-collection": "9.1.x-dev",
     "neos/flow-development-collection": "9.1.x-dev",
     "neos/demo": "9.1.x-dev",
-    "neos/neos-ui": "9.0.x-dev",
+    "neos/neos-ui": "9.1.x-dev",
     "neos/fusion-form": "@dev",
     "neos/party": "@dev",
     "neos/seo": "@dev",
@@ -60,7 +60,7 @@
     "benchmark": "tools/phpbench run --report=aggregate"
   },
   "require-dev": {
-    "neos/behat": "9.0.x-dev",
+    "neos/behat": "9.1.x-dev",
     "neos/buildessentials": "9.1.x-dev",
     "mikey179/vfsstream": "^1.6",
     "league/flysystem-memory": "^3",
