@@ -105,6 +105,8 @@ else
   php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos-ui:~${BRANCH}.0"
 fi
 
+commit_manifest_update "${BRANCH}" "${BUILD_URL}" "${VERSION}" "Distribution"
+
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/flow:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fluid-adaptor:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.ContentRepositoryRegistry.TestSuite require --no-update "neos/behat:~${FLOW_BRANCH}.0"
