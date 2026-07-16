@@ -25,11 +25,11 @@ if [ -z "$1" ]; then
   exit 1
 else
   if [[ $1 =~ (dev)-.+ || $1 =~ .+(@dev|.x-dev) || $1 =~ (alpha|beta|RC|rc)[0-9]+ ]]; then
-    VERSION="$1"
+    EXACT_VERSION_OR_MINOR="$1"
     STABILITY_FLAG=${BASH_REMATCH[1]}
   else
     if [[ $1 =~ ([0-9]+\.[0-9]+)\.[0-9] ]]; then
-      VERSION=~${BASH_REMATCH[1]}.0
+      EXACT_VERSION_OR_MINOR="~${BASH_REMATCH[1]}.0"
     else
       echo >&2 "Version $1 could not be parsed."
       exit 1
@@ -62,47 +62,54 @@ fi
 
 echo "Setting distribution dependencies"
 
-# Require exact versions of the main packages
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/contentgraph-doctrinedbaladapter:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/site-kickstarter:${VERSION}"
-php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${VERSION}"
+# Require exact versions or minor level of the main packages
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos:${EXACT_VERSION_OR_MINOR}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/contentgraph-doctrinedbaladapter:${EXACT_VERSION_OR_MINOR}"
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/demo:${EXACT_VERSION_OR_MINOR}"
 
-# Require exact versions of sub dependency packages, allowing unstable
+# Allow main packages require their required sub dependency packages, allowing unstable
 if [[ ${STABILITY_FLAG} ]]; then
-  echo 'Detected stability flag "${STABILITY_FLAG}" therefore not changing further dependencies in distribution'
+  if [[ "$STABILITY_FLAG" =~ ^(dev|alpha|beta|RC|rc)$ ]]; then
+    COMPOSER_STABILITY_FLAG=${STABILITY_FLAG}
+  else
+    COMPOSER_STABILITY_FLAG="dev"
+  fi
+  php "${COMPOSER_PHAR}" --working-dir=Distribution config minimum-stability $COMPOSER_STABILITY_FLAG
+  php "${COMPOSER_PHAR}" --working-dir=Distribution config prefer-stable true
 else
-  # Remove requirements for development version of sub dependency packages
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/fusion"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/media"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/media-browser"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/diff"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/redirecthandler"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/party"
+  php "${COMPOSER_PHAR}" --working-dir=Distribution config --unset prefer-stable
+  php "${COMPOSER_PHAR}" --working-dir=Distribution config --unset minimum-stability
+fi
 
-  # Remove requirements for development version of framework sub dependency packages
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/cache"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/eel"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/error-messages"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/flow"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/fluid-adaptor"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/kickstarter"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-arrays"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-files"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-mediatypes"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-objecthandling"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-opcodecache"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-pdo"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-schema"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/utility-unicode"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution remove --no-update "neos/http-factories"
+# Require main dev dependencies
+php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/site-kickstarter:${EXACT_VERSION_OR_MINOR}"
+# ...from flow release
+if [[ ${STABILITY_FLAG} ]]; then
+  # using alias as "stable" so neos testing helper packages can declare a dependency
+  STABILITY_ALIAS=" as ${BRANCH}"
+  if [[ "${COMPOSER_STABILITY_FLAG}" == "dev" ]]; then
+    STABILITY_ALIAS=""
+  fi
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:${BRANCH}.x-dev${STABILITY_ALIAS}"
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${BRANCH}.x-dev${STABILITY_ALIAS}"
+else
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:~${FLOW_BRANCH}.0"
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:~${FLOW_BRANCH}.0"
+fi
+
+if [[ "${COMPOSER_STABILITY_FLAG}" == "dev" ]]; then
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos-ui:${BRANCH}.x-dev"
+else
+  # Require separately released Neos Ui in the minor range of the Neos branch to tag.
+  # Uses when tagging a beta via "minimum-stability" the next available tag
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --no-update "neos/neos-ui:~${BRANCH}.0"
 fi
 
 commit_manifest_update "${BRANCH}" "${BUILD_URL}" "${VERSION}" "Distribution"
 
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/flow:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.Neos require --no-update "neos/fluid-adaptor:~${FLOW_BRANCH}.0"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.ContentRepositoryRegistry.TestSuite require --no-update "neos/behat:~${FLOW_BRANCH}.0"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Neos/Neos.SiteKickstarter require --no-update "neos/kickstarter:~${FLOW_BRANCH}.0"
 
 cd Packages/Neos || exit 1
@@ -112,4 +119,4 @@ git add .composer.json
 php ../../Build/BuildEssentials/ComposerManifestMerger.php
 cd - || exit 1
 
-commit_manifest_update "${BRANCH}" "${BUILD_URL}" "${VERSION}" "Packages/Neos"
+commit_manifest_update "${BRANCH}" "${BUILD_URL}" "${EXACT_VERSION_OR_MINOR}" "Packages/Neos"
