@@ -52,7 +52,7 @@ if [ ! -e "composer.phar" ]; then
   rm composer-setup.php
 fi
 
-php composer.phar -v update
+php composer.phar -v update || exit 1
 Build/create-changelog.sh
 if [[ "$VERSION" == *.0 ]]; then
   Build/create-releasenotes.sh
