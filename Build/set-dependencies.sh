@@ -90,8 +90,12 @@ php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neo
 # ...from flow release
 if [[ ${STABILITY_FLAG} ]]; then
   # using alias as "stable" so neos testing helper packages can declare a dependency
-  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${FLOW_BRANCH}.x-dev as ${FLOW_BRANCH}"
-  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:${FLOW_BRANCH}.x-dev as ${FLOW_BRANCH}"
+  STABILITY_ALIAS=" as ${BRANCH}"
+  if [[ "${COMPOSER_STABILITY_FLAG}" == "dev" ]]; then
+    STABILITY_ALIAS=""
+  fi
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:${BRANCH}.x-dev${STABILITY_ALIAS}"
+  php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:${BRANCH}.x-dev${STABILITY_ALIAS}"
 else
   php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/buildessentials:~${FLOW_BRANCH}.0"
   php "${COMPOSER_PHAR}" --working-dir=Distribution require --dev --no-update "neos/behat:~${FLOW_BRANCH}.0"
