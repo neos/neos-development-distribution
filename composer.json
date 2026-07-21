@@ -67,6 +67,7 @@
     "phpunit/phpunit": "^9.6.11",
     "phpstan/phpstan": "^1.10.0",
     "squizlabs/php_codesniffer": "^3.6",
+    "rector/rector": "^1.2",
     "brianium/paratest": "^6.11",
     "neos/site-kickstarter": "9.2.x-dev"
   }
