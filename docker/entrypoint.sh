@@ -6,14 +6,14 @@ composer install
 ./flow doctrine:migrate
 
 # only run site import when nothing was imported before
-importedSites=`./flow site:list`
+importedSites=$(./flow site:list)
 if [ "$importedSites" = "No sites available" ]; then
     echo "Importing content from Demo"
     ./flow cr:setup
     ./flow site:importall --package-key="Neos.Demo"
 fi
 
-./flow user:create --roles Administrator $ADMIN_USERNAME $ADMIN_PASSWORD LocalDev Admin || true
+./flow user:create --roles Administrator "$ADMIN_USERNAME" "$ADMIN_PASSWORD" LocalDev Admin || true
 
 ./flow resource:publish
 ./flow flow:cache:flush
