@@ -9,7 +9,8 @@ composer install
 importedSites=`./flow site:list`
 if [ "$importedSites" = "No sites available" ]; then
     echo "Importing content from Demo"
-    ./flow site:import --package-key="Neos.Demo"
+    ./flow cr:setup
+    ./flow site:importall --package-key="Neos.Demo"
 fi
 
 ./flow user:create --roles Administrator $ADMIN_USERNAME $ADMIN_PASSWORD LocalDev Admin || true
