@@ -64,7 +64,7 @@
     "league/flysystem-memory": "^3",
     "phpunit/phpunit": "~11.5",
     "phpstan/phpstan": "^1.10.0",
-    "brianium/paratest": "^6.11",
+    "brianium/paratest": "^7.6.2",
     "squizlabs/php_codesniffer": "^3.6"
   }
 }
