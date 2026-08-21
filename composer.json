@@ -37,7 +37,6 @@
     "neos/form": "@dev",
     "neos/neos-setup": "^4.0.x-dev",
     "neos/setup": "@dev",
-    "neos/neos": "9.2.x-dev",
     "neos/contentgraph-doctrinedbaladapter": "9.2.x-dev"
   },
   "repositories": {
@@ -61,13 +60,13 @@
   },
   "require-dev": {
     "neos/behat": "9.2.x-dev",
-    "neos/buildessentials": "9.2.x-dev",
-    "mikey179/vfsstream": "^1.6",
+    "neos/buildessentials": "@dev",
+    "mikey179/vfsstream": "^1.6.12",
     "league/flysystem-memory": "^3",
-    "phpunit/phpunit": "^9.6.11",
+    "phpunit/phpunit": "~11.5",
     "phpstan/phpstan": "^1.10.0",
     "friendsofphp/php-cs-fixer": "^3.95",
-    "brianium/paratest": "^6.11",
+    "brianium/paratest": "^7.6.2",
     "neos/site-kickstarter": "9.2.x-dev"
   }
 }
