@@ -1,0 +1,14 @@
+services:
+  web:
+    environment:
+      - FLOW_CONTEXT=Development/DDEV
+      - FLOW_HTTP_TRUSTED_PROXIES=*
+      # DB connection
+      - DB_NEOS_HOST=db
+      - DB_NEOS_PORT=3306
+      - DB_NEOS_PASSWORD=db
+      - DB_NEOS_USER=db
+      - DB_NEOS_DATABASE=db
+      # Neos
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=password

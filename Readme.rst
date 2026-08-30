@@ -20,6 +20,17 @@ First time will take some time because we load all "neos/*" dependencies as Git 
 
   docker compose up -d && docker compose logs -f
 
+DDEV Setup
+----------
+
+DDEV has to be installed on your system. See https://ddev.readthedocs.io/en/stable/
+
+Then you can use the following commands to set up your local development environment:
+
+.. code:: bash
+
+  ddev app-init
+
 local checkout
 --------------
 
