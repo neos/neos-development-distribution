@@ -26,8 +26,9 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "neos/neos-development-collection": "9.0.x-dev",
-    "neos/flow-development-collection": "9.0.x-dev",
+    "neos/neos": "@dev",
+    "neos/contentgraph-doctrinedbaladapter": "@dev",
+    "neos/flow": "@dev",
     "neos/demo": "9.0.x-dev",
     "neos/neos-ui": "9.0.x-dev",
     "neos/fusion-form": "@dev",
@@ -42,6 +43,14 @@
     "distributionPackages": {
       "type": "path",
       "url": "./DistributionPackages/*"
+    },
+    "neosCollectionPackages": {
+      "type": "path",
+      "url": "./NeosCollection/*"
+    },
+    "flowCollectionPackages": {
+      "type": "path",
+      "url": "./FlowCollection/*"
     }
   },
   "suggest": {
@@ -55,7 +64,13 @@
     "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
     "test-unit": "phpunit -c Build/BuildEssentials/PhpUnit/UnitTests.xml",
     "test-functional": "phpunit -c Build/BuildEssentials/PhpUnit/FunctionalTests.xml",
-    "benchmark": "tools/phpbench run --report=aggregate"
+    "benchmark": "tools/phpbench run --report=aggregate",
+    "install-neos-collection": "@composer create-project neos/neos-development-collection NeosCollection 9.0.x-dev --no-install --no-scripts --keep-vcs --prefer-source",
+    "install-flow-collection": "@composer create-project neos/flow-development-collection FlowCollection 9.0.x-dev --no-install --no-scripts --keep-vcs --prefer-source", 
+    "post-root-package-install": [
+      "@install-neos-collection",
+      "@install-flow-collection"
+    ]
   },
   "require-dev": {
     "neos/behat": "9.0.x-dev",
