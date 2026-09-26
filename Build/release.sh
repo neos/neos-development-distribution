@@ -53,16 +53,16 @@ if [ ! -e "composer.phar" ]; then
 fi
 
 php composer.phar -v update || exit 1
-Build/create-changelog.sh
+Build/create-changelog.sh || exit 1
 if [[ "$VERSION" == *.0 ]]; then
-  Build/create-releasenotes.sh
+  Build/create-releasenotes.sh || exit 1
 fi
-Build/tag-release.sh "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}"
+Build/tag-release.sh "${VERSION}" "${BRANCH}" "${FLOW_BRANCH}" "${BUILD_URL}" || exit 1
 
 #
 # Create a new "Release" on Github:
 #
 
-EXTENDED_RELEASE_NOTES="${RELEASE_NOTES}\n\nSee [changelog](http://neos.readthedocs.io/en/${BRANCH}/Appendixes/ChangeLogs/${VERSION//.}.html) for details."
+EXTENDED_RELEASE_NOTES="${RELEASE_NOTES}"$'\n\n'"See [changelog](http://neos.readthedocs.io/en/${BRANCH}/Appendixes/ChangeLogs/${VERSION//.}.html) for details."
 API_JSON=$(jq -n --arg tag_name "${VERSION}" --arg name "Neos ${VERSION}" --arg body "${EXTENDED_RELEASE_NOTES}" --argjson draft "false" --argjson prerelease "false" '$ARGS.named')
 curl -H "Authorization: token ${GITHUB_TOKEN}" --data "${API_JSON}" "https://api.github.com/repos/neos/neos-development-collection/releases"
